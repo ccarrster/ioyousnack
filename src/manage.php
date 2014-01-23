@@ -12,7 +12,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	mysql_select_db('mysql');
 	$query = "insert into eater (name, picture, debt) values('".$name.", '".$picture."', 0);";
 	mysql_query($query);
-	echo('Created User ' . $name);
+	echo('**Created User ' . $name . '**</br>');
 }
 ?>
 Create User</br>
