@@ -129,7 +129,7 @@ Click Your Face
 for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<div>');
-	document.write('<img src="'+users[index].image+'"/>');
+	document.write('<img src="eaters/'+users[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
 	document.write('<div id="debt'+index+'" style="color:red; width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
@@ -143,7 +143,7 @@ document.write('</div>');
 for (index = 0; index < eats.length; ++index) {
 	document.write('<div onclick="buy(id);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
-	document.write('<img style="width:100px; height:100px;" src="'+eats[index].image+'"/>');
+	document.write('<img style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
@@ -157,7 +157,7 @@ document.write('</div>');
 for (index = 0; index < money.length; ++index) {
 	document.write('<div onclick="pay(id);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
-	document.write('<img style="width:100px; height:100px;" src="'+money[index].image+'"/>');
+	document.write('<img style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(money[index].price)+'</div>');
 	document.write('</div>');
