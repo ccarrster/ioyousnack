@@ -129,7 +129,7 @@ Click Your Face
 for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<div>');
-	document.write('<img src="eaters/'+users[index].image+'"/>');
+	document.write('<img src="eaters/'+users[index].image+'" style="width:100px; height:100px;"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
 	document.write('<div id="debt'+index+'" style="color:red; width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
