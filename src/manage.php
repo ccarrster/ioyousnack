@@ -1,6 +1,7 @@
 <html>
 <body>
 <?php
+var_dump($_POST);
 if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$name = $_POST['name'];
 	$picture = '';
