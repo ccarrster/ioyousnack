@@ -11,6 +11,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$link = mysql_connect('localhost', 'root', 'F3ckth1s');
 	mysql_select_db('mysql');
 	$query = "insert into eater (name, picture, debt) values('".$name.", '".$picture."', 0);";
+	var_dump($query);
 	mysql_query($query);
 	echo('**Created User ' . $name . '**</br>');
 }
