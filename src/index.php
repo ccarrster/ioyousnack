@@ -5,17 +5,6 @@
  var users = new Array();
  
  var eats = new Array();
- var eat = new Object();
- eat.name="Big Turk";
- eat.price="85";
- eat.image="bt.jpg";
- eats[0] = eat;
- 
- var eat = new Object();
- eat.name="Stewarts Root Beer";
- eat.price="110";
- eat.image="srb.png";
- eats[1] = eat;
  
  var money = new Array();
  var unit = new Object();
@@ -118,6 +107,17 @@ while($row = mysql_fetch_array( $result )) {
 	echo('user.image="'.$row['picture'].'";');
 	echo('user.id="'.$row['id'].'";');
 	echo('users['.$arrayIndex++.']=user;');
+}
+
+$result = mysql_query("select * from eat;");
+$arrayIndex = 0;
+while($row = mysql_fetch_array( $result )) {
+	echo('var eat = new Object();');
+	echo('eat.name="'.$row['name'].'";');
+	echo('eat.debt="'.$row['price'].'";');
+	echo('eat.image="'.$row['picture'].'";');
+	echo('eat.id="'.$row['id'].'";');
+	echo('eats['.$arrayIndex++.']=eat;');
 }
 ?>
 </script>
