@@ -114,7 +114,7 @@ $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
-	echo('eat.debt="'.$row['price'].'";');
+	echo('eat.price="'.$row['price'].'";');
 	echo('eat.image="'.$row['picture'].'";');
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
@@ -141,7 +141,7 @@ document.write('Click Your Yums');
 document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
-	document.write('<div onclick="buy(id);" id="'+index+'" style="width:100px; float:left;">');
+	document.write('<div onclick="buy(id);" id="'+eats[index].id+'" style="width:100px; float:left;">');
 	document.write('<div>');
 	document.write('<img style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
 	document.write('</div>');
