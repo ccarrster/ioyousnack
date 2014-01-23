@@ -2,18 +2,6 @@
 <script language="javascript">
  var users = new Array();
  
- var user = new Object();
- user.name="Chris";
- user.debt=825;
- user.image="01.jpg";
- users[0] = user;
- 
- var user = new Object();
- user.name="Rachel";
- user.debt=325;
- user.image="02.jpg";
- users[1] = user;
- 
  var eats = new Array();
  var eat = new Object();
  eat.name="Big Turk";
@@ -111,6 +99,22 @@
  
 </script>
 <body>
+<script language="javascript">
+<?php
+$link = mysql_connect('localhost', 'root', 'F3ckth1s');
+mysql_select_db('mysql');
+$result = mysql_query("select * from eater;");
+$arrayIndex = 0;
+while($row = mysql_fetch_array( $result )) {
+	echo('var user = new Object();');
+	echo('user.name="'.$row['name'].'";');
+	echo('user.debt="'.$row['debt'].'";');
+	echo('user.image="'.$row['picture'].'";');
+	echo('user.id="'.$row['id'].'";');
+	echo('users['.$arrayIndex++.']=user;');
+}
+?>
+</script>
 <h1>Guess Wholip IO You Snacks</h1>
 <div>
 Click Your Face
