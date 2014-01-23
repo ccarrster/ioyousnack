@@ -1,7 +1,6 @@
 <html>
 <body>
 <?php
-var_dump($_POST);
 if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$name = $_POST['name'];
 	$picture = '';
@@ -20,7 +19,7 @@ Create User</br>
 <form method="POST" enctype="multipart/form-data">
 <input type="text" name="name"/></br>
 <input type="file" name="picture"/></br>
-<input type="hidden" action="createEater"/>
+<input type="hidden" name="action" value="createEater"/>
 <input type="submit"/></br>
 </form>
 </body>
