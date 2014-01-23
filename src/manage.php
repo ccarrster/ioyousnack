@@ -61,8 +61,8 @@ for (index = 0; index < users.length; ++index) {
 	document.write('<input type="file" name="picture"/>');
 	document.write('</div>');
 	document.write('Name <input type="text" name="name" value="'+users[index].name+'"/></br>');
-	document.write('Debt <input type="text" name="name" value="'+users[index].debt+'"/></br>');
-	document.write('<input type="hidden" name="updateId" value="'+users[index].id+'"/>');
+	document.write('Debt <input type="text" name="debt" value="'+users[index].debt+'"/></br>');
+	document.write('<input type="hidden" name="id" value="'+users[index].id+'"/>');
 	document.write('<input type="hidden" name="action" value="updateEater"/>');
 	document.write('<input type="submit"/></br>');
 	document.write('</form>');
