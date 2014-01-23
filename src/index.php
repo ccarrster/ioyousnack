@@ -1,4 +1,6 @@
 <html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
 <script language="javascript">
  var users = new Array();
  
@@ -74,7 +76,9 @@
  
  function buy(id){
  	if(userSelected != null){
- 		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
+		var selectedId = users[userSelected].id;
+ 		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price);
+		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
  		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt); 
  		clearUserSelected();
  	}
@@ -82,7 +86,9 @@
  
   function pay(id){
  	if(userSelected != null){
- 		users[userSelected].debt = parseFloat(users[userSelected].debt) - parseFloat(money[id].price);
+		var selectedId = users[userSelected].id;
+ 		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price);
+		users[userSelected].debt = parseFloat(users[userSelected].debt) - parseFloat(money[id].price);
  		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt); 
  		clearUserSelected();
  	}
