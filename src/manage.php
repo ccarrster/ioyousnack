@@ -38,7 +38,6 @@ Create User</br>
 </form>
 <script language="javascript">
 	var users = new Array();
-</script>
 
 <?php
 $result = mysql_query("select * from eater;");
@@ -52,9 +51,6 @@ while($row = mysql_fetch_array( $result )) {
 	echo('users['.$arrayIndex++.']=user;');
 }
 ?>
-
-<script language="javascript">
-
 for (index = 0; index < users.length; ++index) {
 	document.write('<div style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<form method="POST" enctype="multipart/form-data">');
