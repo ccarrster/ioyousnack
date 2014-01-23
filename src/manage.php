@@ -18,7 +18,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
 	$name = $_POST['name'];
 	$debt = $_POST['debt'];
-	$id = $_POST['debt'];
+	$id = $_POST['id'];
 	//TODO not blow away an unchanged picture
 	$picture = '';
 	//TODO blow away old picture
