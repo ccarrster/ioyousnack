@@ -23,7 +23,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	$price = $_POST['price'];
 	$id = $_POST['id'];
 	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != ''){
-		move_uploaded_file($_FILES["picture"]["tmp_name"], "eat/" . $_FILES["picture"]["name"]);
+		move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 		$picture = $_FILES["picture"]["name"];
 		$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
 	} else {
