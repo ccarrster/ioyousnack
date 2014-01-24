@@ -37,8 +37,8 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 ?>
 Create Eat</br>
 <form method="POST" enctype="multipart/form-data">
-<input type="text" name="name"/></br>
-<input type="text" name="price"/></br>
+Name <input type="text" name="name"/></br>
+Price(cents) <input type="text" name="price"/></br>
 <input type="file" name="picture"/></br>
 <input type="hidden" name="action" value="createEat"/>
 <input type="submit"/></br>
