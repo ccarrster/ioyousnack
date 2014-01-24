@@ -153,8 +153,9 @@ for (index = 0; index < money.length; ++index) {
 	document.write('</div>');
 }
 </script>
-</br>
-<a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a></br>
+<div style="clear:both;">
+Buy/Pay <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+</div>
 </body>
 </html>
