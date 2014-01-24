@@ -22,9 +22,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != ''){
 		move_uploaded_file($_FILES["picture"]["tmp_name"], "eat/" . $_FILES["picture"]["name"]);
 		$picture = $_FILES["picture"]["name"];
-		$query = "update eater set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
+		$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
 	} else {
-		$query = "update eater set name='".$name."', price='".$price."' where id = ".$id.";";
+		$query = "update eat set name='".$name."', price='".$price."' where id = ".$id.";";
 	}
 	mysql_query($query);
 	echo('**Updated Eat ' . $name . '**</br>');
@@ -73,7 +73,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('</form>');
 	document.write('<form method="post">');
 	document.write('<input type="hidden" name="id" value="'+eats[index].id+'"/>');
-	document.write('<input type="hidden" name="action" value="deleteEater"/>');
+	document.write('<input type="hidden" name="action" value="deleteEat"/>');
 	document.write('<input type="submit" value="delete"/></br>');
 	document.write('</form>');
 	document.write('</div>');
