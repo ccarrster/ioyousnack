@@ -49,7 +49,6 @@
  
  var userSelected = null;
  function selectUser(id){
- 	clearUserSelected();
  	userSelected = id;
  	var element = document.getElementById(id);
  	element.style.border = "thick solid #0000FF";
