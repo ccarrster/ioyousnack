@@ -31,7 +31,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$id = $_POST['id'];
 	$query = "delete from eater where id = ".$id.";";
 	mysql_query($query);
-	echo('**Deleted User ' . $name . '**</br>');
+	echo('**Deleted User ' . $id . '**</br>');
 }
 ?>
 Create User</br>

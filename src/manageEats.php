@@ -32,7 +32,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	$id = $_POST['id'];
 	$query = "delete from eat where id = ".$id.";";
 	mysql_query($query);
-	echo('**Deleted Eat ' . $name . '**</br>');
+	echo('**Deleted Eat ' . $id . '**</br>');
 }
 ?>
 Create Eat</br>
