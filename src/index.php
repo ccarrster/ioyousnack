@@ -83,6 +83,9 @@
  }
  
 </script>
+<head>
+	<title>Guess Wholip IO You Snack Tracker</title>
+</head>
 <body>
 <script language="javascript">
 <?php
@@ -111,7 +114,7 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 </script>
-<h1>Guess Wholip IO You Snacks</h1>
+<h1>Guess Wholip IO You Snack Tracker</h1>
 <div>
 Click Your Face
 </div>

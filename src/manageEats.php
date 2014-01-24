@@ -1,4 +1,7 @@
 <html>
+<head>
+	<title>Guess Wholip IO You Snack Tracker</title>
+</head>
 <body>
 <?php
 $link = mysql_connect('localhost', 'root', 'F3ckth1s');
