@@ -62,7 +62,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('<div style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<form method="POST" enctype="multipart/form-data">');
 	document.write('<div>');
-	document.write('<img src="eaters/'+eats[index].image+'" style="width:100px; height:100px;"/>');
+	document.write('<img src="eats/'+eats[index].image+'" style="width:100px; height:100px;"/>');
 	document.write('<input type="file" name="picture"/>');
 	document.write('</div>');
 	document.write('Name <input type="text" name="name" value="'+eats[index].name+'"/></br>');
