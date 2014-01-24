@@ -14,8 +14,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$query = "insert into eater (name, picture, debt) values('".$name."', '".$picture."', 0);";
 	mysql_query($query);
 	echo('**Created User ' . $name . '**</br>');
-}
-if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
+} else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
 	$name = $_POST['name'];
 	$debt = $_POST['debt'];
 	$id = $_POST['id'];
@@ -28,6 +27,11 @@ if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
 	}
 	mysql_query($query);
 	echo('**Updated User ' . $name . '**</br>');
+} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEater'){
+	$id = $_POST['id'];
+	$query = "delete from eater where id = ".$id.";";
+	mysql_query($query);
+	echo('**Deleted User ' . $name . '**</br>');
 }
 ?>
 Create User</br>
@@ -64,6 +68,11 @@ for (index = 0; index < users.length; ++index) {
 	document.write('<input type="hidden" name="id" value="'+users[index].id+'"/>');
 	document.write('<input type="hidden" name="action" value="updateEater"/>');
 	document.write('<input type="submit"/></br>');
+	document.write('</form>');
+	document.write('<form method="post">');
+	document.write('<input type="hidden" name="id" value="'+users[index].id+'"/>');
+	document.write('<input type="hidden" name="action" value="deleteEater"/>');
+	document.write('<input type="submit" value="delete"/></br>');
 	document.write('</form>');
 	document.write('</div>');
 }
