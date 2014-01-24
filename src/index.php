@@ -55,21 +55,12 @@
  	element.style.border = "thick solid #0000FF";
  }
  
- function clearUserSelected(){
- 	if(userSelected != null){
- 		var element = document.getElementById(userSelected);
- 		element.style.border = "thick solid #FFFFFF";
- 		userSelect = null;
- 	}
- }
- 
  function buy(id){
  	if(userSelected != null){
 		var selectedId = users[userSelected].id;
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price);
 		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
- 		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt); 
- 		clearUserSelected();
+ 		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
  	}
  }
  
@@ -79,7 +70,6 @@
  		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price);
 		users[userSelected].debt = parseFloat(users[userSelected].debt) - parseFloat(money[id].price);
  		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt); 
- 		clearUserSelected();
  	}
  }
  
@@ -163,6 +153,7 @@ for (index = 0; index < money.length; ++index) {
 	document.write('</div>');
 }
 </script>
+</br>
 <a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </body>
