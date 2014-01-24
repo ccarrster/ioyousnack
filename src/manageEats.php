@@ -35,7 +35,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	echo('**Deleted Eat ' . $name . '**</br>');
 }
 ?>
-Create User</br>
+Create Eat</br>
 <form method="POST" enctype="multipart/form-data">
 <input type="text" name="name"/></br>
 <input type="text" name="price"/></br>
@@ -66,7 +66,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('<input type="file" name="picture"/>');
 	document.write('</div>');
 	document.write('Name <input type="text" name="name" value="'+eats[index].name+'"/></br>');
-	document.write('Debt <input type="text" name="price" value="'+eats[index].price+'"/></br>');
+	document.write('Price <input type="text" name="price" value="'+eats[index].price+'"/></br>');
 	document.write('<input type="hidden" name="id" value="'+eats[index].id+'"/>');
 	document.write('<input type="hidden" name="action" value="updateEat"/>');
 	document.write('<input type="submit"/></br>');
