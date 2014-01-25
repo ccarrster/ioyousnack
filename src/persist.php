@@ -8,6 +8,7 @@
 		$query = "update eater set debt = debt + " . $price . " where id = " . $id;
 		mysql_query($query);
 		$query = "insert into log (eater, change) values('" . $id . "', '" . $price . "');";
+		error_log($query, 3, '/tmp/borken.log');
 		mysql_query($query);
 	}
 ?>
