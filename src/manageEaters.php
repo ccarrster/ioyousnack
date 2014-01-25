@@ -9,8 +9,11 @@ mysql_select_db('mysql');
 
 if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$name = $_POST['name'];
+	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+		$name = 'name fail';
+	}
 	$picture = '';
-	if(isset($_FILES["picture"])){
+	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
 		move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
 		$picture = $_FILES["picture"]["name"];
 	}
@@ -19,9 +22,18 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	echo('**Created User ' . $name . '**</br>');
 } else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
 	$name = $_POST['name'];
+	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+		$name = 'name fail';
+	}
 	$debt = $_POST['debt'];
+	if(!preg_match("/^[0-9]+$/i", $debt)){
+		$debt = 0;
+	}
 	$id = $_POST['id'];
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != ''){
+	if(!preg_match("/^[0-9]+$/i", $id)){
+		$id = -1;
+	}
+	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
 		move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
 		$picture = $_FILES["picture"]["name"];
 		$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
@@ -32,6 +44,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	echo('**Updated User ' . $name . '**</br>');
 } else if(isset($_POST['action']) && $_POST['action'] == 'deleteEater'){
 	$id = $_POST['id'];
+	if(!preg_match("/^[0-9]+$/i", $id)){
+		$id = -1;
+	}
 	$query = "delete from eater where id = ".$id.";";
 	mysql_query($query);
 	echo('**Deleted User ' . $id . '**</br>');
