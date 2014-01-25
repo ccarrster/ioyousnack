@@ -7,6 +7,7 @@
 		mysql_select_db($dbName);
 		$query = "update eater set debt = debt + " . $price . " where id = " . $id;
 		mysql_query($query);
-		error_log($id . ' ' . $price, 3, 'buysell.log');
+		$query = "insert into log (eater, change) values(" . $id . ", " . $price . ";";
+		mysql_query($query);
 	}
 ?>
