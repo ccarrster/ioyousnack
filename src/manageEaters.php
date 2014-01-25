@@ -1,12 +1,14 @@
+<?php
+require_once('config.php');
+?>
 <html>
 <head>
-	<title>Snack Tracker</title>
+	<title><?php echo($appName); ?></title>
 </head>
 <body>
 <?php
-$link = mysql_connect('localhost', 'root', 'F3ckth1s');
-mysql_select_db('mysql');
-
+$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
+mysql_select_db($dbName);
 if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 	$name = $_POST['name'];
 	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
