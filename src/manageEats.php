@@ -26,9 +26,18 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	echo('**Created Eat ' . $name . '**</br>');
 } else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
 	$name = $_POST['name'];
+	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+		$name = 'name fail';
+	}
 	$price = $_POST['price'];
+	if(!preg_match("/^[0-9]+$/i", $price)){
+		$price = 0;
+	}
 	$id = $_POST['id'];
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != ''){
+	if(!preg_match("/^[0-9]+$/i", $price)){
+		$id = -1;
+	}
+	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
 		move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 		$picture = $_FILES["picture"]["name"];
 		$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
@@ -39,6 +48,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	echo('**Updated Eat ' . $name . '**</br>');
 } else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
 	$id = $_POST['id'];
+	if(!preg_match("/^[0-9]+$/i", $price)){
+		$id = -1;
+	}
 	$query = "delete from eat where id = ".$id.";";
 	mysql_query($query);
 	echo('**Deleted Eat ' . $id . '**</br>');
