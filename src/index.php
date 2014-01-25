@@ -92,8 +92,8 @@
 <body>
 <script language="javascript">
 <?php
-$link = mysql_connect('localhost', 'root', 'F3ckth1s');
-mysql_select_db('mysql');
+$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
+mysql_select_db($dbName);
 $result = mysql_query("select * from eater;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
