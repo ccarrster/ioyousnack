@@ -26,7 +26,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 		$name = 'name fail';
 	}
 	$debt = $_POST['debt'];
-	if(!preg_match("/^[0-9]+$/i", $debt)){
+	if(!preg_match("/^[0-9-]+$/i", $debt)){
 		$debt = 0;
 	}
 	$id = $_POST['id'];
