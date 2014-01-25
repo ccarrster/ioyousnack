@@ -62,7 +62,7 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 for (index = 0; index < eats.length; ++index) {
-	document.write('<div style="width:100px; border:thick solid #FFFFFF; float:left;">');
+	document.write('<div style="width:200px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<form method="POST" enctype="multipart/form-data">');
 	document.write('<div>');
 	document.write('<img src="eats/'+eats[index].image+'" style="width:100px; height:100px;"/>');
