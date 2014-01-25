@@ -1,3 +1,6 @@
+<?php
+require_once('config.php');
+?>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
@@ -87,7 +90,7 @@
  
 </script>
 <head>
-	<title>Snack Tracker</title>
+	<title><?php echo($appName); ?></title>
 </head>
 <body>
 <script language="javascript">
@@ -125,7 +128,7 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 </script>
-<h1>Snack Tracker</h1>
+<h1><?php echo($appName); ?></h1>
 <div>
 Click Your Face
 </div>
