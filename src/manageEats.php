@@ -34,7 +34,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 		$price = 0;
 	}
 	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $price)){
+	if(!preg_match("/^[0-9]+$/i", $id)){
 		$id = -1;
 	}
 	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
