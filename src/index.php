@@ -49,6 +49,8 @@
  
  var userSelected = null;
  function selectUser(id){
+	var element = document.getElementById(userSelected);
+ 	element.style.border = "thick solid #FFFFFF";
  	userSelected = id;
  	var element = document.getElementById(id);
  	element.style.border = "thick solid #0000FF";
@@ -83,7 +85,7 @@
  
 </script>
 <head>
-	<title>Guess Wholip IO You Snack Tracker</title>
+	<title>Snack Tracker</title>
 </head>
 <body>
 <script language="javascript">
@@ -113,7 +115,7 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 </script>
-<h1>Guess Wholip IO You Snack Tracker</h1>
+<h1>Snack Tracker</h1>
 <div>
 Click Your Face
 </div>

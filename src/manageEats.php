@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Guess Wholip IO You Snack Tracker</title>
+	<title>Snack Tracker</title>
 </head>
 <body>
 <?php
