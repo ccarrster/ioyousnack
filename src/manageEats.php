@@ -48,7 +48,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 	echo('**Updated Eat ' . $name . '**</br>');
 } else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
 	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $price)){
+	if(!preg_match("/^[0-9]+$/i", $id)){
 		$id = -1;
 	}
 	$query = "delete from eat where id = ".$id.";";
