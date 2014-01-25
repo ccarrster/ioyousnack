@@ -76,7 +76,11 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
-	echo('eat.image="'.$row['picture'].'";');
+	if($row['picture'] != ''){
+		echo('eat.image="'.$row['picture'].'";');
+	} else {
+		echo('eat.image="snacks.jpg";');
+	}
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
 }

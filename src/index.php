@@ -100,7 +100,11 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
 	echo('user.name="'.$row['name'].'";');
 	echo('user.debt="'.$row['debt'].'";');
-	echo('user.image="'.$row['picture'].'";');
+	if($row['picture'] != ''){
+		echo('user.image="'.$row['picture'].'";');
+	} else {
+		echo('user.image="human.jpg";');
+	}
 	echo('user.id="'.$row['id'].'";');
 	echo('users['.$arrayIndex++.']=user;');
 }
@@ -111,7 +115,11 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
-	echo('eat.image="'.$row['picture'].'";');
+	if($row['picture'] != ''){
+		echo('eat.image="'.$row['picture'].'";');
+	} else {
+		echo('eat.image="snacks.jpg";');
+	}
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
 }

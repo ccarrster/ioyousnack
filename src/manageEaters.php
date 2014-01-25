@@ -71,7 +71,11 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
 	echo('user.name="'.$row['name'].'";');
 	echo('user.debt="'.$row['debt'].'";');
-	echo('user.image="'.$row['picture'].'";');
+	if($row['picture'] != ''){
+		echo('user.image="'.$row['picture'].'";');
+	} else {
+		echo('user.image="human.jpg";');
+	}
 	echo('user.id="'.$row['id'].'";');
 	echo('users['.$arrayIndex++.']=user;');
 }
