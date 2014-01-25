@@ -1,6 +1,6 @@
 <?php
 $dbUrl = 'localhost';
-$dbPassword = 'F3ckth1s';
+$dbPassword = 'password';
 $dbUser = 'root';
 $dbName = 'mysql';
 $appName = 'Snack Tracker';
