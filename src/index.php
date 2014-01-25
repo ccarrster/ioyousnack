@@ -49,8 +49,10 @@
  
  var userSelected = null;
  function selectUser(id){
-	var element = document.getElementById(userSelected);
- 	element.style.border = "thick solid #FFFFFF";
+	if(userSelected != null){
+		var element = document.getElementById(userSelected);
+		element.style.border = "thick solid #FFFFFF";
+	}
  	userSelected = id;
  	var element = document.getElementById(id);
  	element.style.border = "thick solid #0000FF";
