@@ -127,7 +127,7 @@ while($row = mysql_fetch_array( $result )) {
 ?>
 </script>
 <form>
-				<input type="button" value="Deselect" onclick="selectUser(null);"/>
+				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
 </form>
 <script language="javascript">
 <?php
