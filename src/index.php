@@ -124,13 +124,6 @@ while($row = mysql_fetch_array( $result )) {
 	echo('user.id="'.$row['id'].'";');
 	echo('users['.$arrayIndex++.']=user;');
 }
-?>
-</script>
-<form>
-				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
-</form>
-<script language="javascript">
-<?php
 
 $result = mysql_query("select * from eat;");
 $arrayIndex = 0;
@@ -180,7 +173,13 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
 	document.write('</div>');
 }
-
+</script>
+<div>
+<form>
+				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
+</form>
+</div>
+<script language="javascript">
 document.write('<div style="clear:both;">');
 document.write('Pay your debts');
 document.write('</div>');
