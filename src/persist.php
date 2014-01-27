@@ -1,5 +1,6 @@
 <?php
 	require_once('config.php');
+var_dump($_SERVER['REMOTE_ADDR']);
 	if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
 		$id = $_GET['id'];
 		$price = $_GET['price'];
