@@ -153,7 +153,7 @@ for (index = 0; index < users.length; ++index) {
 	if(formatMoney(users[index].debt) < 0){
 		styleColor = 'color:red;';
 	}
-	document.write('<div id="debt'+index+'" style="'+style+' width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
+	document.write('<div id="debt'+index+'" style="'+styleColor+' width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
 	document.write('</div>');
 }
 
