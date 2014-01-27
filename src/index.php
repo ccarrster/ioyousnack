@@ -67,6 +67,11 @@ require_once('config.php');
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price);
 		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
  		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
+		if(users[userSelected].debt < 0){
+			document.getElementById('debt' + userSelected).style.color = 'red';
+		} else {
+			document.getElementById('debt' + userSelected).style.color = 'black';
+		}
  	}
  }
  
@@ -75,7 +80,12 @@ require_once('config.php');
 		var selectedId = users[userSelected].id;
  		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price);
 		users[userSelected].debt = parseFloat(users[userSelected].debt) - parseFloat(money[id].price);
- 		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt); 
+ 		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
+		if(users[userSelected].debt < 0){
+			document.getElementById('debt' + userSelected).style.color = 'red';
+		} else {
+			document.getElementById('debt' + userSelected).style.color = 'black';
+		}
  	}
  }
  
@@ -139,7 +149,11 @@ for (index = 0; index < users.length; ++index) {
 	document.write('<img src="eaters/'+users[index].image+'" style="width:100px; height:100px;"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
-	document.write('<div id="debt'+index+'" style="color:red; width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
+	var styleColor = 'color:black;';
+	if(formatMoney(users[index].debt) < 0){
+		styleColor = 'color:red;';
+	}
+	document.write('<div id="debt'+index+'" style="'+style+' width:100px; text-align:center;">$'+formatMoney(users[index].debt)+'</div>');
 	document.write('</div>');
 }
 
