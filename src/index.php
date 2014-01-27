@@ -57,8 +57,10 @@ require_once('config.php');
 		element.style.border = "thick solid #FFFFFF";
 	}
  	userSelected = id;
- 	var element = document.getElementById(id);
- 	element.style.border = "thick solid #0000FF";
+	if(userSelected != null){
+		var element = document.getElementById(id);
+		element.style.border = "thick solid #0000FF";
+	}
  }
  
  function buy(id){
@@ -160,6 +162,14 @@ for (index = 0; index < users.length; ++index) {
 	document.write('</div>');
 }
 
+</script>
+<div>
+<form>
+				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
+</form>
+</div>
+<script language="javascript">
+
 document.write('<div style="clear:both;">');
 document.write('Click Your Yums');
 document.write('</div>');
@@ -173,13 +183,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
 	document.write('</div>');
 }
-</script>
-<div>
-<form>
-				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
-</form>
-</div>
-<script language="javascript">
+
 document.write('<div style="clear:both;">');
 document.write('Pay your debts');
 document.write('</div>');
