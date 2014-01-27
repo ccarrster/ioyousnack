@@ -1,6 +1,6 @@
 <?php
 	require_once('config.php');
-	if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) == 0){
+	if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
 		$id = $_GET['id'];
 		$price = $_GET['price'];
 		if(preg_match("/^[0-9]+$/i", $id) && preg_match("/^-?[0-9]+$/i", $price)){
