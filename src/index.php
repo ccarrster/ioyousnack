@@ -95,6 +95,9 @@ require_once('config.php');
  		penniesString = "0" + penniesString;
  	}
  	penniesString = penniesString.substring(0, penniesString.length - 2) + "." + penniesString.substring(penniesString.length - 2);
+	if(pennies < 0){
+		penniesString = penniesString.substring(1);
+	}
  	return penniesString;
  }
  
