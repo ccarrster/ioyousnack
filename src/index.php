@@ -124,6 +124,13 @@ while($row = mysql_fetch_array( $result )) {
 	echo('user.id="'.$row['id'].'";');
 	echo('users['.$arrayIndex++.']=user;');
 }
+?>
+</script>
+<form>
+				<input type="button" value="Deselect" onclick="selectUser(null);"/>
+</form>
+<script language="javascript">
+<?php
 
 $result = mysql_query("select * from eat;");
 $arrayIndex = 0;
