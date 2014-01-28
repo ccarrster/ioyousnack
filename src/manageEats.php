@@ -20,7 +20,7 @@ require_once('config.php');
 				$price = 0;
 			}
 			$picture = '';
-			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
 			}
@@ -40,7 +40,7 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $id)){
 				$id = -1;
 			}
-			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
 				$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";

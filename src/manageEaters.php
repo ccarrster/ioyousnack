@@ -16,7 +16,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			$name = 'name fail';
 		}
 		$picture = '';
-		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
 			$picture = $_FILES["picture"]["name"];
 		}
@@ -36,7 +36,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 		if(!preg_match("/^[0-9]+$/i", $id)){
 			$id = -1;
 		}
-		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
 			$picture = $_FILES["picture"]["name"];
 			$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
