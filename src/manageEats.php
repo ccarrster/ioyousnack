@@ -114,5 +114,8 @@ for (index = 0; index < eats.length; ++index) {
 <a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> Manage Eats</br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
+<div>
+	<img src="http://placekitten.com/800/150"/>
+</div>
 </body>
 </html>

@@ -211,5 +211,8 @@ for (index = 0; index < money.length; ++index) {
 Buy/Pay <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
+<div>
+	<img src="http://placekitten.com/800/150"/>
+</div>
 </body>
 </html>

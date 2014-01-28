@@ -109,5 +109,8 @@ for (index = 0; index < users.length; ++index) {
 <a href="index.php">Buy/Pay</a> Manage Eaters <a href="manageEats.php">Manage Eats</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
+<div>
+	<img src="http://placekitten.com/800/150"/>
+</div>
 </body>
 </html>
