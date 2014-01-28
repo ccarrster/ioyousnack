@@ -108,6 +108,11 @@ require_once('config.php');
 	<title><?php echo($appName); ?></title>
 </head>
 <body>
+<?php
+if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) !== 0){
+	echo('Access from your IP Address is restricted - Changes will not persist');
+}
+?>
 <script language="javascript">
 <?php
 $link = mysql_connect($dbUrl, $dbUser, $dbPassword);
