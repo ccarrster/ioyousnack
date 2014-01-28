@@ -59,7 +59,7 @@ require_once('config.php');
 			echo('**Deleted Eat ' . $id . '**</br>');
 		}
 	} else {
-		echo('Access from your IP Address is restricted - Changes will not persist');
+		echo('Access from your IP Address is restricted - Changes will not persist</br>');
 	}
 ?>
 Create Eat</br>

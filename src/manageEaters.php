@@ -55,7 +55,7 @@ if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
 		echo('**Deleted User ' . $id . '**</br>');
 	}
 } else {
-	echo('Access from your IP Address is restricted - Changes will not persist');
+	echo('Access from your IP Address is restricted - Changes will not persist</br>');
 }
 ?>
 Create User</br>
