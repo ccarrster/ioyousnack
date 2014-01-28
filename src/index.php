@@ -146,6 +146,11 @@ while($row = mysql_fetch_array( $result )) {
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
 }
+if($userUrl != ''){
+	$mustachify = 'http://mustachify.me/?src=' . $userUrl . '/';
+} else {
+	$mustachify = '';
+}
 ?>
 </script>
 <h1><?php echo($appName); ?></h1>
@@ -156,7 +161,7 @@ Click Your Face
 for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	document.write('<div>');
-	document.write('<img src="eaters/'+users[index].image+'" style="width:100px; height:100px;"/>');
+	document.write('<img src="<?php echo($mustachify); ?>eaters/'+users[index].image+'" style="width:100px; height:100px;"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
 	var styleColor = 'color:red;';
