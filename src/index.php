@@ -146,8 +146,8 @@ while($row = mysql_fetch_array( $result )) {
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
 }
-if($userUrl != ''){
-	$mustachify = 'http://mustachify.me/?src=' . $userUrl . '/';
+if($siteUrl != ''){
+	$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 } else {
 	$mustachify = '';
 }
