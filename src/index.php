@@ -109,7 +109,7 @@ require_once('config.php');
 </head>
 <body>
 <?php
-if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) !== 0){
+if(isset($ipWhiteList) && $ipWhiteList != '' && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) !== 0){
 	echo('Access from your IP Address is restricted - Changes will not persist');
 }
 ?>

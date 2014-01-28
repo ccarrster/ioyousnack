@@ -9,7 +9,7 @@ require_once('config.php');
 <?php
 	$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 	mysql_select_db($dbName);
-	if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
+	if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0)){
 		if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 			$name = $_POST['name'];
 			if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
