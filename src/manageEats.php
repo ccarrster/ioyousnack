@@ -7,56 +7,60 @@ require_once('config.php');
 </head>
 <body>
 <?php
-$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-mysql_select_db($dbName);
-if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
-	$name = $_POST['name'];
-	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
-		$name = 'name fail';
-	}
-	$price = $_POST['price'];
-	if(!preg_match("/^[0-9]+$/i", $price)){
-		$price = 0;
-	}
-	$picture = '';
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
-		move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
-		$picture = $_FILES["picture"]["name"];
-	}
-	$query = "insert into eat (name, picture, price) values('".$name."', '".$picture."', '".$price."');";
-	mysql_query($query);
-	echo('**Created Eat ' . $name . '**</br>');
-} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
-	$name = $_POST['name'];
-	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
-		$name = 'name fail';
-	}
-	$price = $_POST['price'];
-	if(!preg_match("/^[0-9]+$/i", $price)){
-		$price = 0;
-	}
-	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $id)){
-		$id = -1;
-	}
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
-		move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
-		$picture = $_FILES["picture"]["name"];
-		$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
+	$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
+	mysql_select_db($dbName);
+	if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
+		if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
+			$name = $_POST['name'];
+			if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+				$name = 'name fail';
+			}
+			$price = $_POST['price'];
+			if(!preg_match("/^[0-9]+$/i", $price)){
+				$price = 0;
+			}
+			$picture = '';
+			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
+				$picture = $_FILES["picture"]["name"];
+			}
+			$query = "insert into eat (name, picture, price) values('".$name."', '".$picture."', '".$price."');";
+			mysql_query($query);
+			echo('**Created Eat ' . $name . '**</br>');
+		} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
+			$name = $_POST['name'];
+			if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+				$name = 'name fail';
+			}
+			$price = $_POST['price'];
+			if(!preg_match("/^[0-9]+$/i", $price)){
+				$price = 0;
+			}
+			$id = $_POST['id'];
+			if(!preg_match("/^[0-9]+$/i", $id)){
+				$id = -1;
+			}
+			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
+				$picture = $_FILES["picture"]["name"];
+				$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
+			} else {
+				$query = "update eat set name='".$name."', price='".$price."' where id = ".$id.";";
+			}
+			mysql_query($query);
+			echo('**Updated Eat ' . $name . '**</br>');
+		} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
+			$id = $_POST['id'];
+			if(!preg_match("/^[0-9]+$/i", $id)){
+				$id = -1;
+			}
+			$query = "delete from eat where id = ".$id.";";
+			mysql_query($query);
+			echo('**Deleted Eat ' . $id . '**</br>');
+		}
 	} else {
-		$query = "update eat set name='".$name."', price='".$price."' where id = ".$id.";";
+		echo('Access from your IP Address is restricted - Changes will not persist');
 	}
-	mysql_query($query);
-	echo('**Updated Eat ' . $name . '**</br>');
-} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
-	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $id)){
-		$id = -1;
-	}
-	$query = "delete from eat where id = ".$id.";";
-	mysql_query($query);
-	echo('**Deleted Eat ' . $id . '**</br>');
-}
 ?>
 Create Eat</br>
 <form method="POST" enctype="multipart/form-data">

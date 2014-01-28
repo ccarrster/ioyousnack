@@ -9,49 +9,53 @@ require_once('config.php');
 <?php
 $link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 mysql_select_db($dbName);
-if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
-	$name = $_POST['name'];
-	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
-		$name = 'name fail';
+if(isset($ipWhiteList) && strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0){
+	if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
+		$name = $_POST['name'];
+		if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+			$name = 'name fail';
+		}
+		$picture = '';
+		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
+			$picture = $_FILES["picture"]["name"];
+		}
+		$query = "insert into eater (name, picture, debt) values('".$name."', '".$picture."', 0);";
+		mysql_query($query);
+		echo('**Created User ' . $name . '**</br>');
+	} else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
+		$name = $_POST['name'];
+		if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
+			$name = 'name fail';
+		}
+		$debt = $_POST['debt'];
+		if(!preg_match("/^-?[0-9]+$/i", $debt)){
+			$debt = 0;
+		}
+		$id = $_POST['id'];
+		if(!preg_match("/^[0-9]+$/i", $id)){
+			$id = -1;
+		}
+		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
+			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
+			$picture = $_FILES["picture"]["name"];
+			$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
+		} else {
+			$query = "update eater set name='".$name."', debt='".$debt."' where id = ".$id.";";
+		}
+		mysql_query($query);
+		echo('**Updated User ' . $name . '**</br>');
+	} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEater'){
+		$id = $_POST['id'];
+		if(!preg_match("/^[0-9]+$/i", $id)){
+			$id = -1;
+		}
+		$query = "delete from eater where id = ".$id.";";
+		mysql_query($query);
+		echo('**Deleted User ' . $id . '**</br>');
 	}
-	$picture = '';
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
-		move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
-		$picture = $_FILES["picture"]["name"];
-	}
-	$query = "insert into eater (name, picture, debt) values('".$name."', '".$picture."', 0);";
-	mysql_query($query);
-	echo('**Created User ' . $name . '**</br>');
-} else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
-	$name = $_POST['name'];
-	if(!preg_match("/^[a-z0-9 ]+$/i", $name)){
-		$name = 'name fail';
-	}
-	$debt = $_POST['debt'];
-	if(!preg_match("/^-?[0-9]+$/i", $debt)){
-		$debt = 0;
-	}
-	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $id)){
-		$id = -1;
-	}
-	if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/", $_FILES["picture"]["name"])){
-		move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
-		$picture = $_FILES["picture"]["name"];
-		$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
-	} else {
-		$query = "update eater set name='".$name."', debt='".$debt."' where id = ".$id.";";
-	}
-	mysql_query($query);
-	echo('**Updated User ' . $name . '**</br>');
-} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEater'){
-	$id = $_POST['id'];
-	if(!preg_match("/^[0-9]+$/i", $id)){
-		$id = -1;
-	}
-	$query = "delete from eater where id = ".$id.";";
-	mysql_query($query);
-	echo('**Deleted User ' . $id . '**</br>');
+} else {
+	echo('Access from your IP Address is restricted - Changes will not persist');
 }
 ?>
 Create User</br>
