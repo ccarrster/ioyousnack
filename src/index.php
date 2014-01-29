@@ -203,7 +203,7 @@ Click Your Face
 </div>
 <script language="javascript">
 for (index = 0; index < users.length; ++index) {
-	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
+	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; height:120px; border:thick solid #FFFFFF; float:left;">');
 	
 	document.write('<div style="position:relative;" onclick="omnom(); width:100px; height:100px;">');
 	document.write('<div id="nomtop" style="position:absolute; width:100px; height:60px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
