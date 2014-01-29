@@ -129,7 +129,7 @@ require_once('config.php');
 function omnom(nomIndex){
 	var nomId = 'nomtop' + nomIndex;
 	document.getElementById('nomtop' + nomIndex).className = "nomnom";
-	setTimeout("clearOmnom('nomtop' + nomIndex)",6000);
+	setTimeout("clearOmnom('nomtop' + userSelected)",6000);
 }
 function clearOmnom(nomId){
 	document.getElementById(nomId).className = "";
