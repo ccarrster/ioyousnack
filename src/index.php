@@ -1,6 +1,40 @@
 <?php
 require_once('config.php');
 ?>
+<style>
+	.nomnom{
+	animation:myfirst 5s;
+	-webkit-animation:myfirst 5s; /* Safari and Chrome */
+	}
+
+	@keyframes myfirst
+	{
+	0%   {left:0px; top:0px;}
+	25%  {left:0px; top:-6px;}
+	30%  {left:0px; top:0px;}
+	35%  {left:0px; top:-4px;}
+	45%  {left:0px; top:0px;}
+	50%  {left:0px; top:-2px;}
+	75%  {left:1px; top:0px;}
+	85%  {left:0px; top:-1px;}
+	95%  {left:-1px; top:0px;}
+	100% {left:0px; top:0px;}
+	}
+
+	@-webkit-keyframes myfirst /* Safari and Chrome */
+	{
+	0%   {left:0px; top:0px;}
+	25%  {left:0px; top:-3px;}
+	30%  {left:0px; top:0px;}
+	35%  {left:0px; top:-4px;}
+	45%  {left:0px; top:0px;}
+	50%  {left:0px; top:-2px;}
+	75%  {left:1px; top:0px;}
+	85%  {left:0px; top:-1px;}
+	95%  {left:-1px; top:0px;}
+	100% {left:0px; top:0px;}
+}
+</style>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
@@ -91,6 +125,16 @@ require_once('config.php');
  	}
  }
  
+function omnom(){
+	document.getElementById('nomtop').className = "nomnom";
+	setTimeout("clearOmnom('nomtop')",6000);
+}
+function clearOmnom(){
+	console.log('clear');
+	document.getElementById("nomtop").className = "";
+}
+
+ 
  function formatMoney(pennies){
  	penniesString = pennies.toString();
  	while(penniesString.length < 3){
@@ -160,8 +204,10 @@ Click Your Face
 <script language="javascript">
 for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
-	document.write('<div>');
-	document.write('<img src="<?php echo($mustachify); ?>eaters/'+users[index].image+'" style="width:100px; height:100px;"/>');
+	
+	document.write('<div style="position:relative;" onclick="omnom();">');
+	document.write('<div id="nomtop" style="position:absolute; width:100px; height:60px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
+	document.write('<div id="nombottom" style="position:absolute; width:100px; height:40px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); background-position:0px -60px; top:60px; left:0px;"></div>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
 	var styleColor = 'color:red;';
