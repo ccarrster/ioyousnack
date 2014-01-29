@@ -126,14 +126,12 @@ require_once('config.php');
  	}
  }
  
-function omnom(index){
-	var nomId = 'nomtop' + index;
-	console.log(nomId);
-	document.getElementById('nomtop' + index).className = "nomnom";
-	setTimeout("clearOmnom('nomtop' + index)",6000);
+function omnom(nomIndex){
+	var nomId = 'nomtop' + nomIndex;
+	document.getElementById('nomtop' + nomIndex).className = "nomnom";
+	setTimeout("clearOmnom('nomtop' + nomIndex)",6000);
 }
 function clearOmnom(nomId){
-	console.log(nomId);
 	document.getElementById(nomId).className = "";
 }
 
