@@ -133,7 +133,7 @@ function omnom(index){
 	setTimeout("clearOmnom('nomtop' + index)",6000);
 }
 function clearOmnom(nomId){
-	console.log('clear');
+	console.log(nomId);
 	document.getElementById(nomId).className = "";
 }
 
