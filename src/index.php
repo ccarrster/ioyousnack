@@ -127,6 +127,8 @@ require_once('config.php');
  }
  
 function omnom(index){
+	var nomId = 'nomtop' + index;
+	console.log(nomId);
 	document.getElementById('nomtop' + index).className = "nomnom";
 	setTimeout("clearOmnom('nomtop' + index)",6000);
 }
