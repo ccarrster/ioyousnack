@@ -126,13 +126,13 @@ require_once('config.php');
  	}
  }
  
-function omnom(){
-	document.getElementById('nomtop').className = "nomnom";
-	setTimeout("clearOmnom('nomtop')",6000);
+function omnom(index){
+	document.getElementById('nomtop' + index).className = "nomnom";
+	setTimeout("clearOmnom('nomtop' + index)",6000);
 }
-function clearOmnom(){
+function clearOmnom(nomId){
 	console.log('clear');
-	document.getElementById("nomtop").className = "";
+	document.getElementById(nomId).className = "";
 }
 
  
@@ -207,7 +207,7 @@ for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	
 	document.write('<div style="position:relative;" width:100px; height:100px;">');
-	document.write('<div id="nomtop" style="position:absolute; width:100px; height:60px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
+	document.write('<div id="nomtop'+index+'" style="position:absolute; width:100px; height:60px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
 	document.write('<div id="nombottom" style="position:absolute; width:100px; height:40px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); background-position:0px -60px; top:60px; left:0px;"></div>');
 	document.write('</div>');
 	document.write('<div style="width:100px; height:100px;">');
