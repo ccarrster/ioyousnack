@@ -99,7 +99,7 @@ require_once('config.php');
  
  function buy(id){
  	if(userSelected != null){
- 		omnom();
+ 		omnom(userSelected);
 		var selectedId = users[userSelected].id;
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id);
 		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
