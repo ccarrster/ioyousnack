@@ -167,9 +167,11 @@ function omnomEats(from, to){
 	}';
 	document.getElementById('eat'+from).className = "nomnomEat";
 	console.log(document.getElementById('eat'+from));
-	setTimeout("clearOmnom('eat'+from)",1100);
+	eatFrom = from;
+	setTimeout("clearOmnom('eat'+eatFrom)",1100);
 }
 
+var eatFrom;
 
  
  function formatMoney(pennies){
