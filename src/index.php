@@ -140,7 +140,9 @@ function omnomEats(from, to){
 	var elementFrom = document.getElementById(from);
 	var rect = elementFrom.getBoundingClientRect();
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
-	//document.getElementById(to);
+	var elementTo = document.getElementById(to);
+	var rect = elementTo.getBoundingClientRect();
+	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	//setTimeout("clearOmnomEats('nomtop' + userSelected)",6000);
 }
 
