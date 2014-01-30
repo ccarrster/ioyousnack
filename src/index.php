@@ -142,10 +142,8 @@ function clearOmnom(nomId){
 function omnomEats(from, to){
 	var elementFrom = document.getElementById('eat'+from);
 	var rectFrom = elementFrom.getBoundingClientRect();
-	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var elementTo = document.getElementById(to);
 	var rectTo = elementTo.getBoundingClientRect();
-	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var styleElement = document.getElementById('customAnimation');
 	var yChange = rectFrom.top - rectTo.top;
 	var xChange = rectFrom.left - rectTo.left;
