@@ -268,7 +268,7 @@ document.write('Click Your Yums');
 document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
-	document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
+	document.write('<div onclick="buy(eat'+index+');" id="eat'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
 	document.write('<img style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
 	document.write('</div>');
