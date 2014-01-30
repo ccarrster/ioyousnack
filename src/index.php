@@ -140,7 +140,7 @@ function clearOmnom(nomId){
 }
 
 function omnomEats(from, to){
-	var elementFrom = document.getElementById(from);
+	var elementFrom = document.getElementById('eat'+from);
 	var rect = elementFrom.getBoundingClientRect();
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var elementTo = document.getElementById(to);
@@ -164,7 +164,7 @@ function omnomEats(from, to){
 	100% {left:0px; top:100px;}\
 	}';
 	document.getElementById(from).className = "nomnomEat";
-	console.log(document.getElementById(from));
+	console.log(document.getElementById('eat'+from));
 	//setTimeout("clearOmnomEats('nomtop' + userSelected)",6000);
 }
 
@@ -268,9 +268,9 @@ document.write('Click Your Yums');
 document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
-	document.write('<div onclick="buy(eat'+index+');" id="eat'+index+'" style="width:100px; float:left;">');
+	document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
-	document.write('<img style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
+	document.write('<img id="eat'+index+'" style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
