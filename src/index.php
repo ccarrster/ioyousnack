@@ -148,7 +148,7 @@ function omnomEats(from, to){
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var styleElement = document.getElementById('customAnimation');
 	styleElement.innerHTML = '	.nomnomEat{\
-	animation:myfirst 1s;\
+	animation:mysecond 1s;\
 	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
 	}\
 \
