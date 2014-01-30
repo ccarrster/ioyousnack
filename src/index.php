@@ -141,12 +141,14 @@ function clearOmnom(nomId){
 
 function omnomEats(from, to){
 	var elementFrom = document.getElementById('eat'+from);
-	var rect = elementFrom.getBoundingClientRect();
+	var rectFrom = elementFrom.getBoundingClientRect();
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var elementTo = document.getElementById(to);
-	var rect = elementTo.getBoundingClientRect();
+	var rectTo = elementTo.getBoundingClientRect();
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
 	var styleElement = document.getElementById('customAnimation');
+	var yChange = rectFrom.top - rectTo.top;
+	var xChange = rectFrom.left - rectTo.left;
 	styleElement.innerHTML = '	.nomnomEat{\
 	animation:mysecond 1s;\
 	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
@@ -155,14 +157,14 @@ function omnomEats(from, to){
 	@keyframes mysecond\
 	{\
 	0%   {left:0px; top:0px;}\
-	50%   {left:0px; top:100px;}\
+	50%   {left:'+xChange+'px; top:'+yChange+'px;}\
 	100% {left:0px; top:0px;}\
 	}\
 \
 	@-webkit-keyframes mysecond /* Safari and Chrome */\
 	{\
 	0%   {left:0px; top:0px;}\
-	50% {left:0px; top:100px;}\
+	50% {left:'+xChange+'px; top:'+yChange+'px;}\
 	100% {left:0px; top:0px;}\
 	}';
 	document.getElementById('eat'+from).className = "nomnomEat";
