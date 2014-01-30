@@ -149,16 +149,16 @@ function omnomEats(from, to){
 	var styleElement = document.getElementById('customAnimation');
 	styleElement.innerHTML = '	.nomnomEat{\
 	animation:myfirst 1s;\
-	-webkit-animation:myfirst 1s; /* Safari and Chrome */\
+	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
 	}\
 \
-	@keyframes myfirst\
+	@keyframes mysecond\
 	{\
 	0%   {left:0px; top:0px;}\
 	100% {left:0px; top:100px;}\
 	}\
 \
-	@-webkit-keyframes myfirst /* Safari and Chrome */\
+	@-webkit-keyframes mysecond /* Safari and Chrome */\
 	{\
 	0%   {left:0px; top:0px;}\
 	100% {left:0px; top:100px;}\
