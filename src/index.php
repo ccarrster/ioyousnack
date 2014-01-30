@@ -99,6 +99,7 @@ require_once('config.php');
  
  function buy(id){
  	if(userSelected != null){
+ 		omnomEats(id, userSelected);
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id);
@@ -134,6 +135,15 @@ function omnom(nomIndex){
 function clearOmnom(nomId){
 	document.getElementById(nomId).className = "";
 }
+
+function omnomEats(from, to){
+	var elementFrom = document.getElementById(from);
+	var rect = elementFrom.getBoundingClientRect();
+	console.log(rect.top, rect.right, rect.bottom, rect.left);
+	//document.getElementById(to);
+	//setTimeout("clearOmnomEats('nomtop' + userSelected)",6000);
+}
+
 
  
  function formatMoney(pennies){
