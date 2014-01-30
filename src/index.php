@@ -273,6 +273,8 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div style="position:relative;">');
 	document.write('<img id="eat'+index+'" style="width:100px; height:100px; position:absolute;" src="eats/'+eats[index].image+'"/>');
+	document.write('<div style="width:100px; height:100px;">');
+	document.write('</div>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
