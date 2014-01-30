@@ -155,13 +155,15 @@ function omnomEats(from, to){
 	@keyframes mysecond\
 	{\
 	0%   {left:0px; top:0px;}\
-	100% {left:0px; top:100px;}\
+	50%   {left:0px; top:100px;}\
+	100% {left:0px; top:0px;}\
 	}\
 \
 	@-webkit-keyframes mysecond /* Safari and Chrome */\
 	{\
 	0%   {left:0px; top:0px;}\
-	100% {left:0px; top:100px;}\
+	50% {left:0px; top:100px;}\
+	100% {left:0px; top:0px;}\
 	}';
 	document.getElementById('eat'+from).className = "nomnomEat";
 	console.log(document.getElementById('eat'+from));
