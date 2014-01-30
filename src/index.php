@@ -33,7 +33,10 @@ require_once('config.php');
 	85%  {left:0px; top:-1px;}
 	95%  {left:-1px; top:0px;}
 	100% {left:0px; top:0px;}
-}
+	}
+</style>
+<style id="customAnimation">
+
 </style>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
@@ -143,6 +146,24 @@ function omnomEats(from, to){
 	var elementTo = document.getElementById(to);
 	var rect = elementTo.getBoundingClientRect();
 	console.log(rect.top, rect.right, rect.bottom, rect.left);
+	var styleElement = document.getElementById('customAnimation');
+	styleElement.innerHTML = '	.nomnomEat{\
+	animation:myfirst 1s;\
+	-webkit-animation:myfirst 1s; /* Safari and Chrome */\
+	}\
+\
+	@keyframes myfirst\
+	{\
+	0%   {left:0px; top:0px;}\
+	100% {left:0px; top:100px;}\
+	}\
+\
+	@-webkit-keyframes myfirst /* Safari and Chrome */\
+	{\
+	0%   {left:0px; top:0px;}\
+	100% {left:0px; top:100px;}\
+	}';
+	document.getElementById(from).className = "nomnomEat";
 	//setTimeout("clearOmnomEats('nomtop' + userSelected)",6000);
 }
 
