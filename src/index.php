@@ -167,7 +167,7 @@ function omnomEats(from, to){
 	}';
 	document.getElementById('eat'+from).className = "nomnomEat";
 	console.log(document.getElementById('eat'+from));
-	//setTimeout("clearOmnomEats('nomtop' + userSelected)",6000);
+	setTimeout("clearOmnom('eat'+from)",1100);
 }
 
 
