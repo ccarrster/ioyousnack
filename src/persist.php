@@ -10,7 +10,7 @@
 			$query = "update eater set debt = debt + " . $price . " where id = " . $id;
 			mysql_query($query);
 			$query = "select debt from eater where id = " . $id;
-			$result = mysql_query("select debt from eater;");
+			$result = mysql_query($query);
 			$arrayIndex = 0;
 			while($row = mysql_fetch_array( $result )) {
 				$debt = $row['debt'];
