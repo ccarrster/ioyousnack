@@ -101,7 +101,11 @@ require_once('config.php');
  	if(userSelected != null){
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
- 		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id);
+		 var newDebt = null;
+ 		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id, function( data ) {
+			newDebt = data;
+			console.log(newDebt);
+		});
 		users[userSelected].debt = parseFloat(users[userSelected].debt) + parseFloat(eats[id].price);
  		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
 		if(users[userSelected].debt <= 0){
