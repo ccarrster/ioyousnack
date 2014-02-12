@@ -17,7 +17,7 @@
 			}
 			$query = "insert into buypaylog (eaterid, eatid, delta, debt, exchangeTime) values('" . $id . "', '" . $productid . "', '" . $price . "', '" . $debt . "', now());";
 			mysql_query($query);
-			echo($row['debt']);
+			echo($row['debt'].'X');
 		}
 	}
 
