@@ -33,7 +33,10 @@ require_once('config.php');
 	85%  {left:0px; top:-1px;}
 	95%  {left:-1px; top:0px;}
 	100% {left:0px; top:0px;}
-}
+	}
+</style>
+<style id="customAnimation">
+
 </style>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
@@ -99,6 +102,7 @@ require_once('config.php');
  
  function buy(id){
  	if(userSelected != null){
+ 		omnomEats(id, userSelected);
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
 		 var newDebt = null;
@@ -138,6 +142,40 @@ function omnom(nomIndex){
 function clearOmnom(nomId){
 	document.getElementById(nomId).className = "";
 }
+
+function omnomEats(from, to){
+	var elementFrom = document.getElementById('eat'+from);
+	var rectFrom = elementFrom.getBoundingClientRect();
+	var elementTo = document.getElementById(to);
+	var rectTo = elementTo.getBoundingClientRect();
+	var styleElement = document.getElementById('customAnimation');
+	var yChange = rectTo.top - rectFrom.top;
+	var xChange = rectTo.left - rectFrom.left;
+	styleElement.innerHTML = '	.nomnomEat{\
+	animation:mysecond 1s;\
+	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
+	}\
+\
+	@keyframes mysecond\
+	{\
+	0%   {left:0px; top:0px;}\
+	50%   {left:'+xChange+'px; top:'+yChange+'px;}\
+	100% {left:0px; top:0px;}\
+	}\
+\
+	@-webkit-keyframes mysecond /* Safari and Chrome */\
+	{\
+	0%   {left:0px; top:0px;}\
+	50% {left:'+xChange+'px; top:'+yChange+'px;}\
+	100% {left:0px; top:0px;}\
+	}';
+	document.getElementById('eat'+from).className = "nomnomEat";
+	console.log(document.getElementById('eat'+from));
+	eatFrom = from;
+	setTimeout("clearOmnom('eat'+eatFrom)",1100);
+}
+
+var eatFrom;
 
  
  function formatMoney(pennies){
@@ -239,8 +277,10 @@ document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
 	document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
-	document.write('<div>');
-	document.write('<img style="width:100px; height:100px;" src="eats/'+eats[index].image+'"/>');
+	document.write('<div style="position:relative;">');
+	document.write('<img id="eat'+index+'" style="width:100px; height:100px; position:absolute;" src="eats/'+eats[index].image+'"/>');
+	document.write('<div style="width:100px; height:100px;">');
+	document.write('</div>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
