@@ -19,12 +19,17 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $price)){
 				$price = 0;
 			}
+			if(isset($_POST['enabled'])){
+				$enabled = true;
+			} else {
+				$enabled = false;
+			}
 			$picture = '';
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
 			}
-			$query = "insert into eat (name, picture, price) values('".$name."', '".$picture."', '".$price."');";
+			$query = "insert into eat (name, picture, price, enabled) values('".$name."', '".$picture."', '".$price."', '".$enabled."');";
 			mysql_query($query);
 			echo('**Created Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
@@ -36,6 +41,12 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $price)){
 				$price = 0;
 			}
+			var_dump($POST);
+			if(isset($_POST['enabled'])){
+				$enabled = true;
+			} else {
+				$enabled = false;
+			}
 			$id = $_POST['id'];
 			if(!preg_match("/^[0-9]+$/i", $id)){
 				$id = -1;
@@ -43,9 +54,9 @@ require_once('config.php');
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
-				$query = "update eat set name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
+				$query = "update eat set enabled = '".$enabled."', name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
 			} else {
-				$query = "update eat set name='".$name."', price='".$price."' where id = ".$id.";";
+				$query = "update eat set enabled = '".$enabled."', name='".$name."', price='".$price."' where id = ".$id.";";
 			}
 			mysql_query($query);
 			echo('**Updated Eat ' . $name . '**</br>');
