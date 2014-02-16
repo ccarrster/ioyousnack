@@ -251,7 +251,20 @@ while($row = mysql_fetch_array( $result )) {
 	}
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
+
 }
+?>
+eats.sort(function(a, b){
+	if(a.sold == b.sold){
+		return 0;
+	} else if(a.sold < b.sold){
+		return -1;
+	} else {
+		return 1;
+	}
+});
+
+<?php
 
 $result = mysql_query("select eatid, count(eatid) as count from buypaylog where delta > 0 group by eatid order by count desc;");
 while($row = mysql_fetch_array( $result )) {
