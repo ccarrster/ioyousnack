@@ -122,7 +122,7 @@ require_once('config.php');
   function pay(id){
  	if(userSelected != null){
 		var selectedId = users[userSelected].id;
-		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+money[id].id, function( data ) {
+		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id, function( data ) {
 			if(data != ''){
 				users[userSelected].debt = data;
 				document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
