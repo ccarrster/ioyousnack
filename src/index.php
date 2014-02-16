@@ -95,8 +95,19 @@ require_once('config.php');
 	}
  	userSelected = id;
 	if(userSelected != null){
+		for(i = 0; i < users.length; i++){
+			if(i != id){
+				var elementToHide = document.getElementById(i);
+				elementToHide.style.display = "none";
+			}
+		}
 		var element = document.getElementById(id);
 		element.style.border = "thick solid #0000FF";
+	} else {
+		for(i = 0; i < users.length; i++){
+			var elementToShow = document.getElementById(i);
+			elementToShow.style.display = "initial";
+		}
 	}
  }
  
