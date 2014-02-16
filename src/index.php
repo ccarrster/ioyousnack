@@ -236,13 +236,14 @@ while($row = mysql_fetch_array( $result )) {
 	echo('users['.$arrayIndex++.']=user;');
 }
 
-$result = mysql_query("select * from eat;");
+$result = mysql_query("select eat.*, (SELECT count(eatid) from buypaylog where buypaylog.eatid = eat.id group by eatid) as sold from eat;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
 	echo('eat.enabled="'.$row['enabled'].'";');
+	echo('eat.sold="'.$row['sold'].'"');
 	if($row['picture'] != ''){
 		echo('eat.image="'.$row['picture'].'";');
 	} else {
@@ -251,6 +252,12 @@ while($row = mysql_fetch_array( $result )) {
 	echo('eat.id="'.$row['id'].'";');
 	echo('eats['.$arrayIndex++.']=eat;');
 }
+
+$result = mysql_query("select eatid, count(eatid) as count from buypaylog where delta > 0 group by eatid order by count desc;");
+while($row = mysql_fetch_array( $result )) {
+	$row['eatid'];
+}
+
 if($siteUrl != ''){
 	$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 } else {
