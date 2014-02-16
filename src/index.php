@@ -258,9 +258,9 @@ eats.sort(function(a, b){
 	if(a.sold == b.sold){
 		return 0;
 	} else if(a.sold < b.sold){
-		return -1;
-	} else {
 		return 1;
+	} else {
+		return -1;
 	}
 });
 
