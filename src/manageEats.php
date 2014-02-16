@@ -99,7 +99,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('</div>');
 	document.write('Name <input type="text" name="name" value="'+eats[index].name+'"/></br>');
 	document.write('Price <input type="text" name="price" value="'+eats[index].price+'"/></br>');
-	if(eats[index].enabled == '' || eats[index].enabled == 'true'){
+	if(eats[index].enabled == '' || eats[index].enabled == '1'){
 		document.write('Enabled <input type="checkbox" checked="checked" name="enabled"/><br/>');
 	} else {
 		document.write('Enabled <input type="checkbox" name="enabled"/><br/>');
