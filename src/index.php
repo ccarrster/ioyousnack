@@ -243,7 +243,7 @@ while($row = mysql_fetch_array( $result )) {
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
 	echo('eat.enabled="'.$row['enabled'].'";');
-	echo('eat.sold="'.$row['sold'].'"');
+	echo('eat.sold="'.$row['sold'].'";');
 	if($row['picture'] != ''){
 		echo('eat.image="'.$row['picture'].'";');
 	} else {
