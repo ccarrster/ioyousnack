@@ -36,7 +36,6 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $price)){
 				$price = 0;
 			}
-			var_dump($_POST);
 			if(isset($_POST['enabled'])){
 				$enabled = true;
 			} else {
