@@ -193,6 +193,9 @@ var eatFrom;
 
  
  function formatMoney(pennies){
+	 if(pennies < 0){
+		 pennies = pennies * -1;
+	 }
  	penniesString = pennies.toString();
  	while(penniesString.length < 3){
  		penniesString = "0" + penniesString;
