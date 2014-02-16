@@ -105,7 +105,6 @@ require_once('config.php');
  		omnomEats(id, userSelected);
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
-		 var newDebt = null;
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id, function( data ) {
 			if(data != ''){
 				users[userSelected].debt = data;
@@ -123,14 +122,18 @@ require_once('config.php');
   function pay(id){
  	if(userSelected != null){
 		var selectedId = users[userSelected].id;
- 		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id);
-		users[userSelected].debt = parseFloat(users[userSelected].debt) - parseFloat(money[id].price);
- 		document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
-		if(users[userSelected].debt <= 0){
-			document.getElementById('debt' + userSelected).style.color = 'black';
-		} else {
-			document.getElementById('debt' + userSelected).style.color = 'red';
-		}
+		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+money[id].id, function( data ) {
+			if(data != ''){
+				users[userSelected].debt = data;
+				document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
+				if(users[userSelected].debt <= 0){
+					document.getElementById('debt' + userSelected).style.color = 'black';
+				} else {
+					document.getElementById('debt' + userSelected).style.color = 'red';
+				}
+			}
+		});
+
  	}
  }
  
