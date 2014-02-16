@@ -19,11 +19,6 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $price)){
 				$price = 0;
 			}
-			if(isset($_POST['enabled'])){
-				$enabled = true;
-			} else {
-				$enabled = false;
-			}
 			$picture = '';
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
