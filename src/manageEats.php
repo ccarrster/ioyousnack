@@ -99,6 +99,7 @@ for (index = 0; index < eats.length; ++index) {
 	document.write('</div>');
 	document.write('Name <input type="text" name="name" value="'+eats[index].name+'"/></br>');
 	document.write('Price <input type="text" name="price" value="'+eats[index].price+'"/></br>');
+	document.write('Enabled <input type="checkbox" checked="checked" name="enabled"/>');
 	document.write('<input type="hidden" name="id" value="'+eats[index].id+'"/>');
 	document.write('<input type="hidden" name="action" value="updateEat"/>');
 	document.write('<input type="submit"/></br>');
