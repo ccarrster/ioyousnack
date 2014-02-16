@@ -228,7 +228,7 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
-	echo('eat.enabled="'.$row['enabled'].'"');
+	echo('eat.enabled="'.$row['enabled'].'";');
 	if($row['picture'] != ''){
 		echo('eat.image="'.$row['picture'].'";');
 	} else {
