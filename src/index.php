@@ -228,6 +228,7 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
+	echo('eat.enabled="'.$row['enabled'].'"');
 	if($row['picture'] != ''){
 		echo('eat.image="'.$row['picture'].'";');
 	} else {
@@ -279,15 +280,17 @@ document.write('Click Your Yums');
 document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
-	document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
-	document.write('<div style="position:relative;">');
-	document.write('<img id="eat'+index+'" style="width:100px; height:100px; position:absolute;" src="eats/'+eats[index].image+'"/>');
-	document.write('<div style="width:100px; height:100px;">');
-	document.write('</div>');
-	document.write('</div>');
-	document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
-	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
-	document.write('</div>');
+	if(eats[index].enabled == '' || eats[index].enabled == '1'){
+		document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
+		document.write('<div style="position:relative;">');
+		document.write('<img id="eat'+index+'" style="width:100px; height:100px; position:absolute;" src="eats/'+eats[index].image+'"/>');
+		document.write('<div style="width:100px; height:100px;">');
+		document.write('</div>');
+		document.write('</div>');
+		document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
+		document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
+		document.write('</div>');
+	}
 }
 
 document.write('<div style="clear:both;">');
