@@ -341,7 +341,7 @@ for (index = 0; index < money.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-Buy/Pay <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a></br>
+Buy/Pay <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a> <a href="report.php">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

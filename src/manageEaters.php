@@ -106,7 +106,7 @@ for (index = 0; index < users.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-<a href="index.php">Buy/Pay</a> Manage Eaters <a href="manageEats.php">Manage Eats</a></br>
+<a href="index.php">Buy/Pay</a> Manage Eaters <a href="manageEats.php">Manage Eats</a> <a href="report.php">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

@@ -122,7 +122,7 @@ for (index = 0; index < eats.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-<a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> Manage Eats</br>
+<a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> Manage Eats <a href="report.php">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

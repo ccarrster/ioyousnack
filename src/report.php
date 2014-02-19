@@ -3,6 +3,7 @@ require_once('config.php');
 ?>
 <html>
 <body>
+Reports<br/>
 <?php
 			$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 			mysql_select_db($dbName);
@@ -46,5 +47,11 @@ require_once('config.php');
 				echo((19 + $i) . ' ' . $hours[$i] . '<br/>');
 			}
 ?>
+<a href="index.php"/>Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a> Reports</br>
+<a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+</div>
+<div>
+	<img src="http://placekitten.com/800/150"/>
+</div>
 </body>
 </html>
