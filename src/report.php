@@ -22,7 +22,7 @@ require_once('config.php');
 			for($i = 5; $i < 24; $i++){
 				echo($i - 5 . ' ' . $hours[$i] . '<br/>');
 			}
-			for($i = 0; $i < 6; $i++){
+			for($i = 0; $i < 5; $i++){
 				echo((19 + $i) . ' ' . $hours[$i] . '<br/>');
 			}
 ?>
