@@ -270,12 +270,6 @@ $result = mysql_query("select eatid, count(eatid) as count from buypaylog where 
 while($row = mysql_fetch_array( $result )) {
 	$row['eatid'];
 }
-
-if($siteUrl != ''){
-	$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
-} else {
-	$mustachify = '';
-}
 ?>
 </script>
 <h1><?php echo($appName); ?></h1>
@@ -287,8 +281,8 @@ for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
 	
 	document.write('<div style="position:relative;" width:100px; height:100px;">');
-	document.write('<div id="nomtop'+index+'" style="position:absolute; width:100px; height:60px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
-	document.write('<div id="nombottom" style="position:absolute; width:100px; height:40px; background-image:url(\'<?php echo($mustachify); ?>eaters/'+users[index].image+'\'); background-position:0px -60px; top:60px; left:0px;"></div>');
+	document.write('<div id="nomtop'+index+'" style="position:absolute; width:100px; height:60px; background-image:url(\'eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
+	document.write('<div id="nombottom" style="position:absolute; width:100px; height:40px; background-image:url(\'eaters/'+users[index].image+'\'); background-position:0px -60px; top:60px; left:0px;"></div>');
 	document.write('</div>');
 	document.write('<div style="width:100px; height:100px;">');
 	document.write('</div>');
