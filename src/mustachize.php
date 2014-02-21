@@ -12,6 +12,7 @@ if(isset($fileName)){
 	echo('<img src="'.$fileName.'"/>');
 	$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 	echo('<img src="'.$mustachify.$fileName.'"/>');
+	var_dump(file_get_contents($mustachify.$fileName));
 }
 ?>
 <form enctype="multipart/form-data" method="post">
