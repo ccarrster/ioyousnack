@@ -21,7 +21,9 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			$picture = $_FILES["picture"]["name"];
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
-				$stash = file_get_contents($mustachify.'eaters/'.$picture);
+				$file = $mustachify.'eaters/'.$picture;
+				var_dump($file);
+				$stash = file_get_contents($file);
 				file_put_contents('eaters/'.$picture, $stash);
 			}
 		}
@@ -46,7 +48,9 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			$picture = $_FILES["picture"]["name"];
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
-				$stash = file_get_contents($mustachify.'eaters/'.$picture);
+				$file = $mustachify.'eaters/'.$picture;
+				var_dump($file);
+				$stash = file_get_contents($file);
 				file_put_contents('eaters/'.$picture, $stash);
 			}
 			$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
