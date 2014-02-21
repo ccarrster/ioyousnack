@@ -22,7 +22,6 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 				$file = $mustachify.'eaters/'.$picture;
-				var_dump($file);
 				$stash = file_get_contents($file);
 				file_put_contents('eaters/'.$picture, $stash);
 			}
@@ -49,7 +48,6 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 				$file = $mustachify.'eaters/'.$picture;
-				var_dump($file);
 				$stash = file_get_contents($file);
 				file_put_contents('eaters/'.$picture, $stash);
 			}
