@@ -1,7 +1,7 @@
 <?php
 if(isset($_FILES['face'])){
-	move_uploaded_file($_FILES["face"]["tmp_name"], $_FILES["face"]["name"]);
-	$fileName = $_FILES["face"]["name"];
+	move_uploaded_file($_FILES["face"]["tmp_name"], 'eaters/' . $_FILES["face"]["name"]);
+	$fileName = 'eaters/' . $_FILES["face"]["name"];
 }
 ?>
 <html>
