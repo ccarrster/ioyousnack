@@ -9,10 +9,10 @@ if(isset($_FILES['face'])){
 <body>
 <?php
 if(isset($fileName)){
-	echo('<img src="'.$fileName.'"/>');
 	$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
-	echo('<img src="'.$mustachify.$fileName.'"/>');
-	var_dump(file_get_contents($mustachify.$fileName));
+	$stash = file_get_contents($mustachify.$fileName);
+	file_put_contents($fileName, $stash);
+	echo('<img src="'.$fileName.'"/>');
 }
 ?>
 <form enctype="multipart/form-data" method="post">
