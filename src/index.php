@@ -152,6 +152,17 @@ require_once('config.php');
  	}
  }
 
+function keepAlive(){
+	$.get( "ping.php", function( data ) {
+		if(data == 'false'){
+			alert("db disconnect");
+		}
+	}).fail(function() {
+		alert( "error" );
+	});
+	setTimeout("keepAlive()",10000);
+}
+
 var nomToClear = new Array();
 var foodToClear = new Array();
  

@@ -5,7 +5,7 @@
 			mysql_select_db($dbName);
 			$query = "select id from eater";
 			$result = mysql_query($query);
-			var_dump($result);
+			echo($result);
 	}
 
 ?>
