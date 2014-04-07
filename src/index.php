@@ -125,6 +125,8 @@ require_once('config.php');
 				} else {
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
+			} else {
+				alert('Transaction not complete');
 			}
 		}).fail(function() {
 			alert( "error" );
@@ -144,6 +146,8 @@ require_once('config.php');
 				} else {
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
+			} else {
+				alert('Transaction not complete');
 			}
 		}).fail(function() {
 			alert( "error" );
