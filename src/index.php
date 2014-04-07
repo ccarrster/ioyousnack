@@ -163,13 +163,11 @@ function omnom(nomIndex){
 }
 function clearOmnom(){
 	for(i = 0; i < nomToClear.length; i++){
-		console.log('clearing class ' + nomToClear[i]);
 		document.getElementById(nomToClear[i]).className = "";
 	}
 }
 function clearFood(){
 	for(i = 0; i < foodToClear.length; i++){
-		console.log('clearing food ' + foodToClear[i]);
 		document.getElementById(foodToClear[i]).className = "";
 	}
 }
