@@ -154,7 +154,7 @@ require_once('config.php');
 
 function keepAlive(){
 	$.get( "ping.php", function( data ) {
-		if(data == 'false'){
+		if(data == 'false' || data == ''){
 			alert("db disconnect");
 		}
 	}).fail(function() {
