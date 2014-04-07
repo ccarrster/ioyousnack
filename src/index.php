@@ -126,7 +126,9 @@ require_once('config.php');
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
 			}
-		});
+		}).fail(function() {
+			alert( "error" );
+		});;
  	}
  }
  
@@ -143,6 +145,8 @@ require_once('config.php');
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
 			}
+		}).fail(function() {
+			alert( "error" );
 		});
 
  	}
@@ -154,6 +158,7 @@ function omnom(nomIndex){
 	setTimeout("clearOmnom('nomtop' + userSelected)",6000);
 }
 function clearOmnom(nomId){
+	console.log('clearing class ' + nomId);
 	document.getElementById(nomId).className = "";
 }
 
