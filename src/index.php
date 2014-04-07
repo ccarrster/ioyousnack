@@ -163,6 +163,8 @@ function keepAlive(){
 	setTimeout("keepAlive()",10000);
 }
 
+ keepAlive();
+
 var nomToClear = new Array();
 var foodToClear = new Array();
  
