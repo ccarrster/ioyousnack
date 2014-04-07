@@ -151,15 +151,27 @@ require_once('config.php');
 
  	}
  }
+
+var nomToClear = new Array();
+var foodToClear = new Array();
  
 function omnom(nomIndex){
 	var nomId = 'nomtop' + nomIndex;
 	document.getElementById('nomtop' + nomIndex).className = "nomnom";
-	setTimeout("clearOmnom('nomtop' + userSelected)",6000);
+	nomToClear.push('nomtop' + nomIndex);
+	setTimeout("clearOmnom()",6000);
 }
-function clearOmnom(nomId){
-	console.log('clearing class ' + nomId);
-	document.getElementById(nomId).className = "";
+function clearOmnom(){
+	for(i = 0; i < nomToClear.length; i++){
+		console.log('clearing class ' + nomId);
+		document.getElementById(nomToClear[i]).className = "";
+	}
+}
+function clearFood(){
+	for(i = 0; i < foodToClear.length; i++){
+		console.log('clearing food ' + nomId);
+		document.getElementById(foodToClear[i]).className = "";
+	}
 }
 
 function omnomEats(from, to){
@@ -191,7 +203,8 @@ function omnomEats(from, to){
 	document.getElementById('eat'+from).className = "nomnomEat";
 	console.log(document.getElementById('eat'+from));
 	eatFrom = from;
-	setTimeout("clearOmnom('eat'+eatFrom)",1100);
+	foodToClear.push('eat'+eatFrom);
+	setTimeout("clearFood()",1100);
 }
 
 var eatFrom;
