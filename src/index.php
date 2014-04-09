@@ -111,7 +111,7 @@ require_once('config.php');
 	}
  }
  
- function buy(id){
+ function buy(id, retry){
  	if(userSelected != null){
  		omnomEats(id, userSelected);
  		omnom(userSelected);
@@ -129,12 +129,16 @@ require_once('config.php');
 				alert('Transaction not complete');
 			}
 		}).fail(function() {
-			alert( "error" );
+			if(retry){
+				buy(id, false);
+			} else {
+				alert( "error" );
+			}
 		});;
  	}
  }
  
-  function pay(id){
+  function pay(id, retry){
  	if(userSelected != null){
 		var selectedId = users[userSelected].id;
 		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id, function( data ) {
@@ -150,7 +154,11 @@ require_once('config.php');
 				alert('Transaction not complete');
 			}
 		}).fail(function() {
-			alert( "error" );
+			if(retry){
+				pay(id, false);
+			} else {
+				alert( "error" );
+			}
 		});
 
  	}
@@ -329,7 +337,7 @@ document.write('</div>');
 
 for (index = 0; index < eats.length; ++index) {
 	if(eats[index].enabled == '' || eats[index].enabled == '1'){
-		document.write('<div onclick="buy('+index+');" id="'+index+'" style="width:100px; float:left;">');
+		document.write('<div onclick="buy('+index+', true);" id="'+index+'" style="width:100px; float:left;">');
 		document.write('<div style="position:relative;">');
 		document.write('<img id="eat'+index+'" style="width:100px; height:100px; position:absolute;" src="eats/'+eats[index].image+'"/>');
 		document.write('<div style="width:100px; height:100px;">');
@@ -346,7 +354,7 @@ document.write('Pay your debts');
 document.write('</div>');
 
 for (index = 0; index < money.length; ++index) {
-	document.write('<div onclick="pay(this.id);" id="'+index+'" style="width:100px; float:left;">');
+	document.write('<div onclick="pay(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
 	document.write('<img style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
