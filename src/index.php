@@ -130,7 +130,7 @@ require_once('config.php');
 			}
 		}).fail(function() {
 			if(retry){
-				buy(id, false);
+				setTimeout("buy("+id+", false)", 1000);
 			} else {
 				alert( "error" );
 			}
@@ -155,7 +155,7 @@ require_once('config.php');
 			}
 		}).fail(function() {
 			if(retry){
-				pay(id, false);
+				setTimeout("pay("+id+", false)", 1000);
 			} else {
 				alert( "error" );
 			}
