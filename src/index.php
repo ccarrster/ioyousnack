@@ -98,8 +98,8 @@ require_once('config.php');
  	userSelected = id;
 	if(userSelected != null){
 		historyElement.innerHTML = "Past Noms for " + userSelected;
-
-		$.get( "nomHistory.php?id="+userSelected, function( data ) {
+		var selectedId = users[userSelected].id;
+		$.get( "nomHistory.php?id="+selectedId, function( data ) {
 			if(data != ''){
 				//xxx
 				console.log(jQuery.parseJSON(data));
