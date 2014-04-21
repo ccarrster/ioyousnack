@@ -98,6 +98,18 @@ require_once('config.php');
  	userSelected = id;
 	if(userSelected != null){
 		historyElement.innerHTML = "Past Noms for " + userSelected;
+
+		$.get( "nomHistory.php?id="+userSelected, function( data ) {
+			if(data != ''){
+				var decodedData = json_decode(data);
+				console.log(decodedData);
+			} else {
+				console.log('Error blank nom history');
+			}
+		}).fail(function() {
+			console.log('Error getting nom history');
+		});
+
 		for(i = 0; i < users.length; i++){
 			if(i != id){
 				var elementToHide = document.getElementById(i);
@@ -138,7 +150,7 @@ require_once('config.php');
 			} else {
 				alert( "error" );
 			}
-		});;
+		});
  	}
  }
  
