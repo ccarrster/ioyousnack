@@ -92,7 +92,12 @@ require_once('config.php');
 	if(userSelected != null){
 		var element = document.getElementById(userSelected);
 		element.style.border = "thick solid #FFFFFF";
+		var historyElement = document.getElementById('nomHistory');
+		historyElement.innerHTML = "Past Noms for " + id;
+	} else {
+		historyElement.innerHTML = "";
 	}
+
  	userSelected = id;
 	if(userSelected != null){
 		for(i = 0; i < users.length; i++){
@@ -328,6 +333,7 @@ for (index = 0; index < users.length; ++index) {
 <form>
 				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
 </form>
+	<div id="historyElement"></div>
 </div>
 <script language="javascript">
 
