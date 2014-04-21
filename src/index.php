@@ -89,11 +89,10 @@ require_once('config.php');
  
  var userSelected = null;
  function selectUser(id){
+	var historyElement = document.getElementById('nomHistory');
 	if(userSelected != null){
 		var element = document.getElementById(userSelected);
 		element.style.border = "thick solid #FFFFFF";
-		var historyElement = document.getElementById('nomHistory');
-		console.log(historyElement);
 		historyElement.innerHTML = "Past Noms for " + id;
 	} else {
 		historyElement.innerHTML = "";
