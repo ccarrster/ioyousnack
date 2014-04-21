@@ -88,8 +88,8 @@ require_once('config.php');
  money[7] = unit;
  
  var userSelected = null;
+
  function selectUser(id){
-	var historyElement = document.getElementById('nomHistory');
 	if(userSelected != null){
 		var element = document.getElementById(userSelected);
 		element.style.border = "thick solid #FFFFFF";
@@ -97,7 +97,27 @@ require_once('config.php');
 
  	userSelected = id;
 	if(userSelected != null){
-		var selectedId = users[userSelected].id;
+		for(i = 0; i < users.length; i++){
+			if(i != id){
+				var elementToHide = document.getElementById(i);
+				elementToHide.style.display = "none";
+			}
+		}
+		var element = document.getElementById(id);
+		element.style.border = "thick solid #0000FF";
+	} else {
+		for(i = 0; i < users.length; i++){
+			var elementToShow = document.getElementById(i);
+			elementToShow.style.display = "initial";
+		}
+	}
+	showNomHistory();
+ }
+
+ function showNomHistory(){
+	 var historyElement = document.getElementById('nomHistory');
+	 if(userSelected != null){
+	 	var selectedId = users[userSelected].id;
 		$.get( "nomHistory.php?id="+selectedId, function( data ) {
 			if(data != ''){
 				var history = jQuery.parseJSON(data);
@@ -112,24 +132,11 @@ require_once('config.php');
 		}).fail(function() {
 			console.log('Error getting nom history');
 		});
-
-		for(i = 0; i < users.length; i++){
-			if(i != id){
-				var elementToHide = document.getElementById(i);
-				elementToHide.style.display = "none";
-			}
-		}
-		var element = document.getElementById(id);
-		element.style.border = "thick solid #0000FF";
-	} else {
-		historyElement.innerHTML = "";
-		for(i = 0; i < users.length; i++){
-			var elementToShow = document.getElementById(i);
-			elementToShow.style.display = "initial";
-		}
-	}
+	 } else {
+		 historyElement.innerHTML = "";
+	 }
  }
- 
+
  function buy(id, retry){
  	if(userSelected != null){
  		omnomEats(id, userSelected);
@@ -154,6 +161,7 @@ require_once('config.php');
 				alert( "error" );
 			}
 		});
+		showNomHistory();
  	}
  }
  
