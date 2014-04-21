@@ -346,7 +346,7 @@ for (index = 0; index < users.length; ++index) {
 <form>
 				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
 </form>
-	<div id="nomHistory"></div>
+	<div id="nomHistory" style="float:left;"></div>
 </div>
 <script language="javascript">
 
