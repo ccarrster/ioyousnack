@@ -101,8 +101,7 @@ require_once('config.php');
 
 		$.get( "nomHistory.php?id="+userSelected, function( data ) {
 			if(data != ''){
-				var decodedData = json_decode(data);
-				console.log(decodedData);
+				console.log(data);
 			} else {
 				console.log('Error blank nom history');
 			}
