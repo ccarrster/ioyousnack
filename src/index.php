@@ -97,15 +97,15 @@ require_once('config.php');
 
  	userSelected = id;
 	if(userSelected != null){
-		historyElement.innerHTML = "Past Noms for " + userSelected;
 		var selectedId = users[userSelected].id;
 		$.get( "nomHistory.php?id="+selectedId, function( data ) {
 			if(data != ''){
 				var history = jQuery.parseJSON(data);
+				var pastNoms = "";
 				for(var i = 0; i < history.length; i++){
-					console.log(history[i]['name']);
-					console.log(history[i]['exchangeTime']);
+					pastNoms += history[i]['name'] + ' ' + history[i]['exchangeTime'] + '</br>';
 				}
+				historyElement.innerHTML = pastNoms;
 			} else {
 				console.log('Error blank nom history');
 			}
