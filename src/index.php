@@ -93,9 +93,10 @@ require_once('config.php');
 		var element = document.getElementById(userSelected);
 		element.style.border = "thick solid #FFFFFF";
 		var historyElement = document.getElementById('nomHistory');
-		historyElement.innerHTML = "Past Noms for " + id;
+		console.log(historyElement);
+		//historyElement.innerHTML = "Past Noms for " + id;
 	} else {
-		historyElement.innerHTML = "";
+		//historyElement.innerHTML = "";
 	}
 
  	userSelected = id;
