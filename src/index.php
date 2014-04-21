@@ -93,13 +93,11 @@ require_once('config.php');
 	if(userSelected != null){
 		var element = document.getElementById(userSelected);
 		element.style.border = "thick solid #FFFFFF";
-		historyElement.innerHTML = "Past Noms for " + id;
-	} else {
-		historyElement.innerHTML = "";
 	}
 
  	userSelected = id;
 	if(userSelected != null){
+		historyElement.innerHTML = "Past Noms for " + userSelected;
 		for(i = 0; i < users.length; i++){
 			if(i != id){
 				var elementToHide = document.getElementById(i);
@@ -109,6 +107,7 @@ require_once('config.php');
 		var element = document.getElementById(id);
 		element.style.border = "thick solid #0000FF";
 	} else {
+		historyElement.innerHTML = "";
 		for(i = 0; i < users.length; i++){
 			var elementToShow = document.getElementById(i);
 			elementToShow.style.display = "initial";
