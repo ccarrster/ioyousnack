@@ -103,7 +103,8 @@ require_once('config.php');
 			if(data != ''){
 				var history = jQuery.parseJSON(data);
 				for(var i = 0; i < history.length; i++){
-					console.log(history[i]);
+					console.log(history[i]['name']);
+					console.log(history[i]['exchangeTime']);
 				}
 			} else {
 				console.log('Error blank nom history');
