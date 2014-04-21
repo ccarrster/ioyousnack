@@ -151,6 +151,7 @@ require_once('config.php');
 				} else {
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
+				showNomHistory();
 			} else {
 				alert('Transaction not complete');
 			}
@@ -161,7 +162,6 @@ require_once('config.php');
 				alert( "error" );
 			}
 		});
-		showNomHistory();
  	}
  }
  
