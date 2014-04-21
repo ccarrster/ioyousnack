@@ -11,7 +11,7 @@
 			while($row = mysql_fetch_array( $result )) {
 				$rows[] = $row;
 			}
-			echo(json_encode($rows));
+			echo(json_encode($query));
 		}
 	}
 
