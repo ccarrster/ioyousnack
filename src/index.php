@@ -111,19 +111,14 @@ require_once('config.php');
 			elementToShow.style.display = "initial";
 		}
 	}
-	showNomHistory('buy');
-	showNomHistory('pay');
+	showNomHistory();
  }
 
- function showNomHistory(type){
+ function showNomHistory(){
 	 var historyElement = document.getElementById('nomHistory');
 	 if(userSelected != null){
 	 	var selectedId = users[userSelected].id;
-		var payString = '';
-		if(type == 'pay'){
-			payString = '&pay=true';
-		}
-		$.get( "nomHistory.php?id="+selectedId+payString, function( data ) {
+		$.get( "nomHistory.php?id="+selectedId, function( data ) {
 			if(data != ''){
 				var history = jQuery.parseJSON(data);
 				var pastNoms = "";
@@ -156,7 +151,7 @@ require_once('config.php');
 				} else {
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
-				showNomHistory('buy');
+				showNomHistory();
 			} else {
 				alert('Transaction not complete');
 			}
@@ -182,7 +177,6 @@ require_once('config.php');
 				} else {
 					document.getElementById('debt' + userSelected).style.color = 'red';
 				}
-				showNomHistory('pay');
 			} else {
 				alert('Transaction not complete');
 			}
