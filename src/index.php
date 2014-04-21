@@ -94,9 +94,9 @@ require_once('config.php');
 		element.style.border = "thick solid #FFFFFF";
 		var historyElement = document.getElementById('nomHistory');
 		console.log(historyElement);
-		//historyElement.innerHTML = "Past Noms for " + id;
+		historyElement.innerHTML = "Past Noms for " + id;
 	} else {
-		//historyElement.innerHTML = "";
+		historyElement.innerHTML = "";
 	}
 
  	userSelected = id;
@@ -217,7 +217,6 @@ function omnomEats(from, to){
 	100% {left:0px; top:0px;}\
 	}';
 	document.getElementById('eat'+from).className = "nomnomEat";
-	console.log(document.getElementById('eat'+from));
 	eatFrom = from;
 	foodToClear.push('eat'+eatFrom);
 	setTimeout("clearFood()",1100);
