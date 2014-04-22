@@ -9,7 +9,7 @@
 			$result = mysql_query($query);
 			$eatRows = array();
 			while($row = mysql_fetch_array( $result )) {
-				$eatRows[$row['id']] = $row['name'];
+				$eatRows[] = $row;
 			}
 
 			mysql_select_db($dbName);
