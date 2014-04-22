@@ -124,8 +124,8 @@ require_once('config.php');
 				var pastNoms = "";
 				for(var i = 0; i < history.length; i++){
 					$eatId = history[i]['eatid'];
-					$name = history[i]['delta'];
-					pastNoms += $name + ' ' + history[i]['exchangeTime'] + '</br>';
+					$delta = history[i]['delta'];
+					pastNoms += history[i]['name'] + ' ' + $name + ' ' + history[i]['exchangeTime'] + '</br>';
 				}
 				historyElement.innerHTML = pastNoms;
 			} else {
