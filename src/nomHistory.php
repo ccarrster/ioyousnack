@@ -5,7 +5,7 @@
 		if(preg_match("/^[0-9]+$/", $id)){
 			$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 			
-			$query = "select id, name from eat;";
+			$query = "select 'id', 'name' from eat;";
 			$result = mysql_query($query);
 			$eatRows = array();
 			while($row = mysql_fetch_array( $result )) {
