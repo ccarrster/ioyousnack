@@ -18,7 +18,7 @@
 			$rows = array();
 			while($row = mysql_fetch_array( $result )) {
 				if($row['delta'] > 0){
-					$row['name'] = $row['eatid'];
+					$row['name'] = $row['eatid'] . print_r($eatRows, true);
 				} else {
 					$row['name'] = 'Payed ' . $row['delta'];
 				}
