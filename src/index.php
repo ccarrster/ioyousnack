@@ -123,9 +123,9 @@ require_once('config.php');
 				var history = jQuery.parseJSON(data);
 				var pastNoms = "";
 				for(var i = 0; i < history.length; i++){
-					$eatId = history[i]['eatid'];
-					$delta = history[i]['delta'];
-					pastNoms += history[i]['name'] + ' ' + $name + ' ' + history[i]['exchangeTime'] + '</br>';
+					var eatId = history[i]['eatid'];
+					var delta = history[i]['delta'];
+					pastNoms += history[i]['name'] + ' ' + delta + ' ' + history[i]['exchangeTime'] + '</br>';
 				}
 				historyElement.innerHTML = pastNoms;
 			} else {
