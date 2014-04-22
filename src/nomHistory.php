@@ -13,7 +13,7 @@
 			}
 
 			mysql_select_db($dbName);
-			$query = "select eatid, delta, exchangeTime from buypaylog where delta > 0 and eaterid = " . $id . " order by exchangeTime desc limit 5;";
+			$query = "select eatid, delta, exchangeTime from buypaylog where eaterid = " . $id . " order by exchangeTime desc limit 5;";
 			$result = mysql_query($query);
 			$rows = array();
 			while($row = mysql_fetch_array( $result )) {
