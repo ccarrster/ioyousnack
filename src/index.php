@@ -123,7 +123,12 @@ require_once('config.php');
 				var history = jQuery.parseJSON(data);
 				var pastNoms = "";
 				for(var i = 0; i < history.length; i++){
-					pastNoms += history[i]['name'] + ' ' + history[i]['exchangeTime'] + '</br>';
+					$name = history[i]['name'];
+					$delta = history[i]['delta'];
+					if($delta < 0){
+						$name = delta;
+					}
+					pastNoms += $name + ' ' + history[i]['exchangeTime'] + '</br>';
 				}
 				historyElement.innerHTML = pastNoms;
 			} else {
