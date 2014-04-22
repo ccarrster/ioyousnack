@@ -8,6 +8,7 @@
 			$query = "select * from eat;";
 			$result = mysql_query($query);
 			$eatRows = array();
+			$eatRows[] = 'horse';
 			while($row = mysql_fetch_array( $result )) {
 				$eatRows[] = $row;
 			}
