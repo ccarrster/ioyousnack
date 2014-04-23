@@ -307,6 +307,7 @@ while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
 	echo('user.name="'.$row['name'].'";');
 	echo('user.debt="'.$row['debt'].'";');
+	echo('user.bought="'.$row['bought'].'";');
 	if($row['picture'] != ''){
 		echo('user.image="'.$row['picture'].'";');
 	} else {
