@@ -301,7 +301,7 @@ if(isset($ipWhiteList) && $ipWhiteList != '' && strpos($_SERVER['REMOTE_ADDR'], 
 <?php
 $link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 mysql_select_db($dbName);
-$result = mysql_query("select * (SELECT count(eaterid) from buypaylog where buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater;");
+$result = mysql_query("select *, (SELECT count(eaterid) from buypaylog where buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
