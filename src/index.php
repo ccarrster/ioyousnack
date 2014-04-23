@@ -245,8 +245,6 @@ function omnomEats(from, to){
 	var styleElement = document.getElementById('customAnimation');
 	var yChange = rectTo.top - rectFrom.top;
 	var xChange = rectTo.left - rectFrom.left;
-	console.log(rectTo.top);
-	console.log(rectFrom.top);
 	styleElement.innerHTML = '	.nomnomEat{\
 	animation:mysecond 1s;\
 	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
