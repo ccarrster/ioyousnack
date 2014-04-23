@@ -39,6 +39,26 @@ require_once('config.php');
 
 </style>
 <html>
+<script language="javascript">
+idleTime = 0;
+window.onmousemove = mousemoved;
+
+var idleInterval = setInterval(timerIncrement, 60000);
+
+function mousemoved()
+{
+	idleTime = 0;
+}
+
+function timerIncrement(){
+	idleTime++;
+	if(idleTime > 2){
+		if(userSelected != null){
+			selectUser(null);
+		}
+	}
+}
+</script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script language="javascript">
