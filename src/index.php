@@ -274,7 +274,7 @@ function omnomEats(from, to){
  var payFrom;
 
 function omnomPay(from, to){
-	var elementFrom = document.getElementById(from);
+	var elementFrom = document.getElementById('pay'+from);
 	var rectFrom = elementFrom.getBoundingClientRect();
 	var elementTo = document.getElementById(to);
 	var rectTo = elementTo.getBoundingClientRect();
@@ -301,7 +301,7 @@ function omnomPay(from, to){
 	}';
 	document.getElementById(from).className = "nomnomEat";
 	payFrom = from;
-	foodToClear.push(payFrom);
+	foodToClear.push('pay'+payFrom);
 	setTimeout("clearFood()",1100);
 }
 
@@ -445,7 +445,7 @@ document.write('</div>');
 for (index = 0; index < money.length; ++index) {
 	document.write('<div onclick="pay(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
-	document.write('<img style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
+	document.write('<img id="pay"'+index+' style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(money[index].price)+'</div>');
 	document.write('</div>');
