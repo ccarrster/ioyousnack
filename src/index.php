@@ -335,7 +335,7 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 eats.sort(function(a, b){
-	return a.sold - b.sold;
+	return b.sold - a.sold;
 });
 
 <?php
