@@ -192,6 +192,7 @@ function timerIncrement(){
  
   function pay(id, retry){
  	if(userSelected != null){
+		omnomPay(id, userSelected);
 		var selectedId = users[userSelected].id;
 		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id, function( data ) {
 			if(data != ''){
@@ -268,7 +269,43 @@ function omnomEats(from, to){
 	setTimeout("clearFood()",1100);
 }
 
-var eatFrom;
+ var eatFrom;
+
+ var payFrom;
+
+function omnomPay(from, to){
+	var elementFrom = document.getElementById('eat'+from);
+	var rectFrom = elementFrom.getBoundingClientRect();
+	var elementTo = document.getElementById(to);
+	var rectTo = elementTo.getBoundingClientRect();
+	var styleElement = document.getElementById('customAnimation');
+	var yChange = rectTo.top - rectFrom.top;
+	var xChange = rectTo.left - rectFrom.left;
+	styleElement.innerHTML = '	.nomnomEat{\
+	animation:mysecond 1s;\
+	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
+	}\
+\
+	@keyframes mysecond\
+	{\
+	0%   {left:0px; top:0px;}\
+	50%   {left:'+xChange+'px; top:'+yChange+'px;}\
+	100% {left:0px; top:0px;}\
+	}\
+\
+	@-webkit-keyframes mysecond /* Safari and Chrome */\
+	{\
+	0%   {left:0px; top:0px;}\
+	50% {left:'+xChange+'px; top:'+yChange+'px;}\
+	100% {left:0px; top:0px;}\
+	}';
+	document.getElementById(from).className = "nomnomEat";
+	payFrom = from;
+	foodToClear.push(payFrom);
+	setTimeout("clearFood()",1100);
+}
+
+
 
  
  function formatMoney(pennies){
