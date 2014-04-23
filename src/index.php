@@ -190,7 +190,7 @@ function timerIncrement(){
  	}
  }
  
-  function pay(id, retry){
+  function payMoney(id, retry){
  	if(userSelected != null){
 		omnomPay(id, userSelected);
 		var selectedId = users[userSelected].id;
@@ -208,7 +208,7 @@ function timerIncrement(){
 			}
 		}).fail(function() {
 			if(retry){
-				setTimeout("pay("+id+", false)", 1000);
+				setTimeout("payMoney("+id+", false)", 1000);
 			} else {
 				alert( "error" );
 			}
@@ -443,7 +443,7 @@ document.write('Pay your debts');
 document.write('</div>');
 
 for (index = 0; index < money.length; ++index) {
-	document.write('<div onclick="pay(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
+	document.write('<div onclick="payMoney(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
 	document.write('<img id="pay"'+index+' style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
