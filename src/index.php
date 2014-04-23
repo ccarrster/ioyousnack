@@ -164,7 +164,7 @@ function timerIncrement(){
 
  function buy(id, retry){
  	if(userSelected != null){
- 		omnomEats(id, userSelected);
+ 		omnomEats('eat'+id, userSelected);
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
  		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id, function( data ) {
@@ -192,7 +192,7 @@ function timerIncrement(){
  
   function payMoney(id, retry){
  	if(userSelected != null){
-		omnomPay(id, userSelected);
+		omnomEats('pay'+id, userSelected);
 		var selectedId = users[userSelected].id;
 		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id, function( data ) {
 			if(data != ''){
@@ -238,43 +238,7 @@ function clearFood(){
 }
 
 function omnomEats(from, to){
-	var elementFrom = document.getElementById('eat'+from);
-	var rectFrom = elementFrom.getBoundingClientRect();
-	var elementTo = document.getElementById(to);
-	var rectTo = elementTo.getBoundingClientRect();
-	var styleElement = document.getElementById('customAnimation');
-	var yChange = rectTo.top - rectFrom.top;
-	var xChange = rectTo.left - rectFrom.left;
-	styleElement.innerHTML = '	.nomnomEat{\
-	animation:mysecond 1s;\
-	-webkit-animation:mysecond 1s; /* Safari and Chrome */\
-	}\
-\
-	@keyframes mysecond\
-	{\
-	0%   {left:0px; top:0px;}\
-	50%   {left:'+xChange+'px; top:'+yChange+'px;}\
-	100% {left:0px; top:0px;}\
-	}\
-\
-	@-webkit-keyframes mysecond /* Safari and Chrome */\
-	{\
-	0%   {left:0px; top:0px;}\
-	50% {left:'+xChange+'px; top:'+yChange+'px;}\
-	100% {left:0px; top:0px;}\
-	}';
-	document.getElementById('eat'+from).className = "nomnomEat";
-	eatFrom = from;
-	foodToClear.push('eat'+eatFrom);
-	setTimeout("clearFood()",1100);
-}
-
- var eatFrom;
-
- var payFrom;
-
-function omnomPay(from, to){
-	var elementFrom = document.getElementById('pay'+from);
+	var elementFrom = document.getElementById(from);
 	var rectFrom = elementFrom.getBoundingClientRect();
 	var elementTo = document.getElementById(to);
 	var rectTo = elementTo.getBoundingClientRect();
@@ -300,12 +264,12 @@ function omnomPay(from, to){
 	100% {left:0px; top:0px;}\
 	}';
 	document.getElementById(from).className = "nomnomEat";
-	payFrom = from;
-	foodToClear.push('pay'+payFrom);
+	eatFrom = from;
+	foodToClear.push(eatFrom);
 	setTimeout("clearFood()",1100);
 }
 
-
+ var eatFrom;
 
  
  function formatMoney(pennies){
@@ -445,7 +409,7 @@ document.write('</div>');
 for (index = 0; index < money.length; ++index) {
 	document.write('<div onclick="payMoney(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
 	document.write('<div>');
-	document.write('<img id="pay'+index+'" style="width:100px; height:100px;" src="money/'+money[index].image+'"/>');
+	document.write('<img id="pay'+index+'" style="width:100px; height:100px; position:absolute;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(money[index].price)+'</div>');
 	document.write('</div>');
