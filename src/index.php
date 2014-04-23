@@ -410,7 +410,7 @@ document.write('</div>');
 
 for (index = 0; index < money.length; ++index) {
 	document.write('<div onclick="payMoney(this.id, true);" id="'+index+'" style="width:100px; float:left;">');
-	document.write('<div>');
+	document.write('<div style="position:relative;">');
 	document.write('<img id="pay'+index+'" style="width:100px; height:100px; position:absolute;" src="money/'+money[index].image+'"/>');
 	document.write('</div>');
 	document.write('<div style="width:100px; text-align:center;">$'+formatMoney(money[index].price)+'</div>');
