@@ -189,7 +189,7 @@ require_once('config.php');
 				alert( "error" );
 			}
 		});
-
+		showNomHistory();
  	}
  }
 
