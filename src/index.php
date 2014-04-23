@@ -57,6 +57,9 @@ function timerIncrement(){
 			selectUser(null);
 		}
 	}
+	if(idleTime > 10){
+		window.location.reload();
+	}
 }
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
