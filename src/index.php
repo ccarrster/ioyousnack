@@ -274,7 +274,7 @@ function omnomEats(from, to){
  var payFrom;
 
 function omnomPay(from, to){
-	var elementFrom = document.getElementById('eat'+from);
+	var elementFrom = document.getElementById(from);
 	var rectFrom = elementFrom.getBoundingClientRect();
 	var elementTo = document.getElementById(to);
 	var rectTo = elementTo.getBoundingClientRect();
