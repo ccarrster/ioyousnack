@@ -24,7 +24,7 @@
 				if($row['delta'] > 0){
 					$row['name'] = $eatRows[$row['eatid']];
 				} else {
-					$row['name'] = 'Payed ' . $row['delta'];
+					$row['name'] = 'Paid ' . $row['delta'];
 				}
 				$rows[] = $row;
 			}
