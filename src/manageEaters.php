@@ -1,4 +1,8 @@
 <?php
+$storeId = 1;
+if(isset($_GET['storeId'])){
+	$storeId = (int)$_GET['storeId'];
+}
 require_once('config.php');
 ?>
 <html>
@@ -26,7 +30,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 				file_put_contents('eaters/'.$picture, $stash);
 			}
 		}
-		$query = "insert into eater (name, picture, debt) values('".$name."', '".$picture."', 0);";
+		$query = "insert into eater (name, picture, debt, storeid) values('".$name."', '".$picture."', 0, $storeId);";
 		mysql_query($query);
 		echo('**Created User ' . $name . '**</br>');
 	} else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
@@ -51,9 +55,9 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 				$stash = file_get_contents($file);
 				file_put_contents('eaters/'.$picture, $stash);
 			}
-			$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where id = ".$id.";";
+			$query = "update eater set name='".$name."', picture='".$picture."', debt='".$debt."' where storeid = $storeId AND id = ".$id.";";
 		} else {
-			$query = "update eater set name='".$name."', debt='".$debt."' where id = ".$id.";";
+			$query = "update eater set name='".$name."', debt='".$debt."' where storeid = $storeId AND id = ".$id.";";
 		}
 		mysql_query($query);
 		echo('**Updated User ' . $name . '**</br>');
@@ -62,7 +66,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 		if(!preg_match("/^[0-9]+$/i", $id)){
 			$id = -1;
 		}
-		$query = "delete from eater where id = ".$id.";";
+		$query = "delete from eater where storeid = $storeId AND id = ".$id.";";
 		mysql_query($query);
 		echo('**Deleted User ' . $id . '**</br>');
 	}
@@ -81,7 +85,7 @@ Name <input type="text" name="name"/></br>
 	var users = new Array();
 
 <?php
-$result = mysql_query("select * from eater;");
+$result = mysql_query("select * from eater WHERE storeid = $storeId;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
@@ -118,7 +122,7 @@ for (index = 0; index < users.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-<a href="index.php">Buy/Pay</a> Manage Eaters <a href="manageEats.php">Manage Eats</a> <a href="report.php">Reports</a></br>
+<a href="index.php?storeId=<?php echo($storeId); ?>">Buy/Pay</a> Manage Eaters <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

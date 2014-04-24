@@ -1,4 +1,8 @@
 <?php
+$storeId = 1;
+if(isset($_GET['storeId'])){
+	$storeId = (int)$_GET['storeId'];
+}
 require_once('config.php');
 ?>
 <style>
@@ -141,7 +145,7 @@ function timerIncrement(){
 	 var historyElement = document.getElementById('nomHistory');
 	 if(userSelected != null){
 	 	var selectedId = users[userSelected].id;
-		$.get( "nomHistory.php?id="+selectedId, function( data ) {
+		$.get( "nomHistory.php?id="+selectedId+'&storeId=<?php echo($storeId); ?>', function( data ) {
 			if(data != ''){
 				var history = jQuery.parseJSON(data);
 				var pastNoms = "";
@@ -167,7 +171,7 @@ function timerIncrement(){
  		omnomEats('eat'+id, userSelected);
  		omnom(userSelected);
 		var selectedId = users[userSelected].id;
- 		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id, function( data ) {
+ 		$.get( "persist.php?id="+selectedId+"&price="+eats[id].price+"&productid="+eats[id].id+"&storeId=<?php echo($storeId); ?>", function( data ) {
 			if(data != ''){
 				users[userSelected].debt = data;
 				document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
@@ -194,7 +198,7 @@ function timerIncrement(){
  	if(userSelected != null){
 		omnomEats('pay'+id, userSelected);
 		var selectedId = users[userSelected].id;
-		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id, function( data ) {
+		$.get( "persist.php?id="+selectedId+"&price=-"+money[id].price+"&productid="+id+"&storeId=<?php echo($storeId); ?>", function( data ) {
 			if(data != ''){
 				users[userSelected].debt = data;
 				document.getElementById('debt' + userSelected).innerHTML = '$' + formatMoney(users[userSelected].debt);
@@ -301,7 +305,7 @@ if(isset($ipWhiteList) && $ipWhiteList != '' && strpos($_SERVER['REMOTE_ADDR'], 
 <?php
 $link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 mysql_select_db($dbName);
-$result = mysql_query("select *, (SELECT count(eaterid) from buypaylog where buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater;");
+$result = mysql_query("select *, (SELECT count(eaterid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater WHERE eater.storeid = $storeId;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var user = new Object();');
@@ -317,9 +321,7 @@ while($row = mysql_fetch_array( $result )) {
 	echo('users['.$arrayIndex++.']=user;');
 }
 
-
-
-$result = mysql_query("select eat.*, (SELECT count(eatid) from buypaylog where buypaylog.eatid = eat.id AND delta > 0 group by eatid) as sold from eat;");
+$result = mysql_query("select eat.*, (SELECT count(eatid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eatid = eat.id AND delta > 0 group by eatid) as sold from eat WHERE eat.storeid = $storeId;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
@@ -345,13 +347,6 @@ eats.sort(function(a, b){
 	return b.sold - a.sold;
 });
 
-<?php
-
-$result = mysql_query("select eatid, count(eatid) as count from buypaylog where delta > 0 group by eatid order by count desc;");
-while($row = mysql_fetch_array( $result )) {
-	$row['eatid'];
-}
-?>
 </script>
 <h1><?php echo($appName); ?></h1>
 <div>
@@ -417,7 +412,7 @@ for (index = 0; index < money.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-Buy/Pay <a href="manageEaters.php">Manage Eaters</a> <a href="manageEats.php">Manage Eats</a> <a href="report.php">Reports</a></br>
+Buy/Pay <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

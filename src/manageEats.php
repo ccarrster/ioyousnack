@@ -1,4 +1,8 @@
 <?php
+$storeId = 1;
+if(isset($_GET['storeId'])){
+	$storeId = (int)$_GET['storeId'];
+}
 require_once('config.php');
 ?>
 <html>
@@ -24,7 +28,7 @@ require_once('config.php');
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
 			}
-			$query = "insert into eat (name, picture, price, enabled) values('".$name."', '".$picture."', '".$price."', '".$enabled."');";
+			$query = "insert into eat (name, picture, price, enabled, storeid) values('".$name."', '".$picture."', '".$price."', '".$enabled."', $storeId);";
 			mysql_query($query);
 			echo('**Created Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
@@ -48,9 +52,9 @@ require_once('config.php');
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
 				$picture = $_FILES["picture"]["name"];
-				$query = "update eat set enabled = '".$enabled."', name='".$name."', picture='".$picture."', price='".$price."' where id = ".$id.";";
+				$query = "update eat set enabled = '".$enabled."', name='".$name."', picture='".$picture."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			} else {
-				$query = "update eat set enabled = '".$enabled."', name='".$name."', price='".$price."' where id = ".$id.";";
+				$query = "update eat set enabled = '".$enabled."', name='".$name."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			}
 			mysql_query($query);
 			echo('**Updated Eat ' . $name . '**</br>');
@@ -59,7 +63,7 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $id)){
 				$id = -1;
 			}
-			$query = "delete from eat where id = ".$id.";";
+			$query = "delete from eat where storeid = $storeId AND id = ".$id.";";
 			mysql_query($query);
 			echo('**Deleted Eat ' . $id . '**</br>');
 		}
@@ -79,7 +83,7 @@ Price(cents) <input type="text" name="price"/></br>
 	var eats = new Array();
 
 <?php
-$result = mysql_query("select * from eat;");
+$result = mysql_query("select * from eat where storeid = $storeId;");
 $arrayIndex = 0;
 while($row = mysql_fetch_array( $result )) {
 	echo('var eat = new Object();');
@@ -122,7 +126,7 @@ for (index = 0; index < eats.length; ++index) {
 }
 </script>
 <div style="clear:both;">
-<a href="index.php">Buy/Pay</a> <a href="manageEaters.php">Manage Eaters</a> Manage Eats <a href="report.php">Reports</a></br>
+<a href="index.php?storeId=<?php echo($storeId); ?>">Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> Manage Eats <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 <div>

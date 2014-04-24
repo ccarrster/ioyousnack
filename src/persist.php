@@ -1,4 +1,8 @@
 <?php
+	$storeId = 1;
+	if(isset($_GET['storeId'])){
+		$storeId = (int)$_GET['storeId'];
+	}
 	require_once('config.php');
 	if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0)){
 		$id = $_GET['id'];
@@ -7,15 +11,15 @@
 		if(preg_match("/^[0-9]+$/", $id) && preg_match("/^-?[0-9]+$/", $price) && preg_match("/^[0-9]+$/", $productid)){
 			$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
 			mysql_select_db($dbName);
-			$query = "update eater set debt = debt + " . $price . " where id = " . $id;
+			$query = "update eater set debt = debt + " . $price . " where storeid = $storeId AND id = " . $id;
 			mysql_query($query);
-			$query = "select debt from eater where id = " . $id;
+			$query = "select debt from eater where storeid = $storeId AND id = " . $id;
 			$result = mysql_query($query);
 			$arrayIndex = 0;
 			while($row = mysql_fetch_array( $result )) {
 				$debt = $row['debt'];
 			}
-			$query = "insert into buypaylog (eaterid, eatid, delta, debt, exchangeTime) values('" . $id . "', '" . $productid . "', '" . $price . "', '" . $debt . "', now());";
+			$query = "insert into buypaylog (eaterid, eatid, delta, debt, exchangeTime, storeid) values('" . $id . "', '" . $productid . "', '" . $price . "', '" . $debt . "', now(), $storeId);";
 			mysql_query($query);
 			echo($debt);
 		}
