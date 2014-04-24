@@ -24,6 +24,13 @@ require_once('config.php');
 				$price = 0;
 			}
 			$picture = '';
+
+			if(isset($_POST['enabled'])){
+				$enabled = true;
+			} else {
+				$enabled = false;
+			}
+
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $storeId . '_' . $_FILES["picture"]["name"]);
 				$picture = $storeId . '_' . $_FILES["picture"]["name"];
@@ -40,11 +47,7 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $price)){
 				$price = 0;
 			}
-			if(isset($_POST['enabled'])){
-				$enabled = true;
-			} else {
-				$enabled = false;
-			}
+
 			$id = $_POST['id'];
 			if(!preg_match("/^[0-9]+$/i", $id)){
 				$id = -1;
