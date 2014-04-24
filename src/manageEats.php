@@ -25,8 +25,8 @@ require_once('config.php');
 			}
 			$picture = '';
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
-				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
-				$picture = $_FILES["picture"]["name"];
+				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $storeId . '_' . $_FILES["picture"]["name"]);
+				$picture = $storeId . '_' . $_FILES["picture"]["name"];
 			}
 			$query = "insert into eat (name, picture, price, enabled, storeid) values('".$name."', '".$picture."', '".$price."', '".$enabled."', $storeId);";
 			mysql_query($query);
@@ -50,8 +50,8 @@ require_once('config.php');
 				$id = -1;
 			}
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
-				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $_FILES["picture"]["name"]);
-				$picture = $_FILES["picture"]["name"];
+				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $storeId . '_' . $_FILES["picture"]["name"]);
+				$picture = $storeId . '_' . $_FILES["picture"]["name"];
 				$query = "update eat set enabled = '".$enabled."', name='".$name."', picture='".$picture."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			} else {
 				$query = "update eat set enabled = '".$enabled."', name='".$name."', price='".$price."' where storeid = $storeId AND id = ".$id.";";

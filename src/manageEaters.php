@@ -21,8 +21,8 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 		}
 		$picture = '';
 		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
-			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
-			$picture = $_FILES["picture"]["name"];
+			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $storeId . '_' . $_FILES["picture"]["name"]);
+			$picture = $storeId . '_' . $_FILES["picture"]["name"];
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 				$file = $mustachify.'eaters/'.$picture;
@@ -47,8 +47,8 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			$id = -1;
 		}
 		if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
-			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $_FILES["picture"]["name"]);
-			$picture = $_FILES["picture"]["name"];
+			move_uploaded_file($_FILES["picture"]["tmp_name"], "eaters/" . $storeId . '_' . $_FILES["picture"]["name"]);
+			$picture = $storeId . '_' . $_FILES["picture"]["name"];
 			if($siteUrl != ''){
 				$mustachify = 'http://mustachify.me/?src=' . $siteUrl . '/';
 				$file = $mustachify.'eaters/'.$picture;
