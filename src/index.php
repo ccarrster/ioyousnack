@@ -415,8 +415,5 @@ for (index = 0; index < money.length; ++index) {
 Buy/Pay <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
-<div>
-	<img src="http://placekitten.com/800/150"/>
-</div>
 </body>
 </html>

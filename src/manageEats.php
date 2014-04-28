@@ -138,8 +138,5 @@ for (index = 0; index < eats.length; ++index) {
 <a href="index.php?storeId=<?php echo($storeId); ?>">Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> Manage Eats <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
-<div>
-	<img src="http://placekitten.com/800/150"/>
-</div>
 </body>
 </html>

@@ -54,8 +54,5 @@ Reports<br/>
 <a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports</br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
-<div>
-	<img src="http://placekitten.com/800/150"/>
-</div>
 </body>
 </html>
