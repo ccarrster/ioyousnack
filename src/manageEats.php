@@ -59,6 +59,7 @@ require_once('config.php');
 			} else {
 				$query = "update eat set enabled = ".$enabled.", name='".$name."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			}
+			var_dump($query);
 			mysql_query($query);
 			echo('**Updated Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
