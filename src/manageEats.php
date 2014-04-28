@@ -25,7 +25,7 @@ require_once('config.php');
 			}
 			$picture = '';
 
-			if(isset($_POST['enabled'])){
+			if(isset($_POST['enabled']) && $_POST['enabled'] == 'on'){
 				$enabled = 1;
 			} else {
 				$enabled = 0;
@@ -80,7 +80,7 @@ Name <input type="text" name="name"/></br>
 Price(cents) <input type="text" name="price"/></br>
 <input type="file" name="picture"/></br>
 <input type="hidden" name="action" value="createEat"/>
-<input type="hidden" name="enabled" value="true">
+<input type="hidden" name="enabled" value="true"/>
 <input type="submit"/></br>
 </form>
 <script language="javascript">
