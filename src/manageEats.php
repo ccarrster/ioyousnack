@@ -52,6 +52,11 @@ require_once('config.php');
 			if(!preg_match("/^[0-9]+$/i", $id)){
 				$id = -1;
 			}
+			if(isset($_POST['enabled']) && $_POST['enabled'] == 'on'){
+				$enabled = 1;
+			} else {
+				$enabled = 0;
+			}
 			if(isset($_FILES["picture"]) && $_FILES["picture"]["name"] != '' && preg_match("/^[a-z0-9 ._]+$/i", $_FILES["picture"]["name"])){
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $storeId . '_' . $_FILES["picture"]["name"]);
 				$picture = $storeId . '_' . $_FILES["picture"]["name"];
@@ -59,7 +64,6 @@ require_once('config.php');
 			} else {
 				$query = "update eat set enabled = ".$enabled.", name='".$name."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			}
-			var_dump($query);
 			mysql_query($query);
 			echo('**Updated Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
