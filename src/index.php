@@ -146,17 +146,19 @@ function timerIncrement(){
 	 if(userSelected != null){
 	 	var selectedId = users[userSelected].id;
 		$.get( "nomHistory.php?id="+selectedId+'&storeId=<?php echo($storeId); ?>', function( data ) {
-			if(data != ''){
-				var history = jQuery.parseJSON(data);
-				var pastNoms = "";
-				for(var i = 0; i < history.length; i++){
-					var eatId = history[i]['eatid'];
-					var delta = history[i]['delta'];
-					pastNoms += history[i]['name'] + ' ' + delta + ' ' + history[i]['exchangeTime'] + '</br>';
+			if(userSelected != null){
+				if(data != ''){
+					var history = jQuery.parseJSON(data);
+					var pastNoms = "";
+					for(var i = 0; i < history.length; i++){
+						var eatId = history[i]['eatid'];
+						var delta = history[i]['delta'];
+						pastNoms += history[i]['name'] + ' ' + delta + ' ' + history[i]['exchangeTime'] + '</br>';
+					}
+					historyElement.innerHTML = pastNoms;
+				} else {
+					console.log('Error blank nom history');
 				}
-				historyElement.innerHTML = pastNoms;
-			} else {
-				console.log('Error blank nom history');
 			}
 		}).fail(function() {
 			console.log('Error getting nom history');
