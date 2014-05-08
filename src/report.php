@@ -66,23 +66,39 @@ Reports<br/>
 			echo('<tr><td>Friday</td><td>' . $data['Friday'] . '</td></tr>');
 			echo('<tr><td>Saturday</td><td>' . $data['Saturday'] . '</td></tr>');
 			echo('</table>');
+
 ?>
-<div></div>
+<div>
+
 I am taking cash out
 <form method="post">
-	I am <select name="eaterid">
+	I am</br><select name="eaterid">
 	<?php
 			$eaterQuery = 'select id, name from eater;';
 			$result = mysql_query($eaterQuery);
 			while($row = mysql_fetch_array( $result )) {
 				echo('<option value="'.$row['id'].'">'.$row['name'].'</option>');
 			}
-	?></br>
-	</select>
-	Amount <input type="text" name="amount"></br>
-	Message <textarea name="message"></textarea></br>
+	?>
+	</select></br>
+	Amount</br><input type="text" name="amount"></br>
+	Message</br><textarea name="message"></textarea></br>
 	<input type="submit">
 </form>
+
+<?php
+//insert
+if(isset($_POST['amount'])){
+	$cashoutInsert = "INSERT INTO cashout (eaterid, delta, message, exchange_time) VALUES(".(int)$_POST['eaterid'].", '".$_POST['amount']."', '".$_POST['message']."', NOW());";
+	mysql_query($cashoutInsert);
+}
+//select
+$cashoutQuery = "SELECT name, delta, message, exchange_time from cashout join eaters on eaterid = eaters.id";
+$result = mysql_query($cashoutQuery);
+while($row = mysql_fetch_array( $result )) {
+	echo('Name: ' . $row['name'] . ' Amount: ' . $row['delta'] . ' Message: ' . $row['message'] . ' Time(GMT): ' . $row['exchange_time'] . '</br>');
+}
+?>
 </div>
 
 <a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports</br>
