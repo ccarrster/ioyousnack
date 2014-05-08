@@ -50,6 +50,22 @@ Reports<br/>
 			for($i = 0; $i < 5; $i++){
 				echo((19 + $i) . ' ' . $hours[$i] . '<br/>');
 			}
+
+			$dayEatQuery = 'select sum(delta) as delta, dayname(exchangeTime) as day_name from buypaylog where delta > 0 group by day_name;';
+			$result = mysql_query($dayEatQuery);
+			echo('<table><tr><td>Pennies</td><td>Day Name</td></tr>');
+			$data = array();
+			while($row = mysql_fetch_array( $result )) {
+				$data[$row['day_name']] = $row['delta'];
+			}
+			echo('<tr><td>Sunday</td><td>' . $data['Sunday'] . '</td></tr>');
+			echo('<tr><td>Monday</td><td>' . $data['Monday'] . '</td></tr>');
+			echo('<tr><td>Tuesday</td><td>' . $data['Tuesday'] . '</td></tr>');
+			echo('<tr><td>Wednesday</td><td>' . $data['Wednesday'] . '</td></tr>');
+			echo('<tr><td>Thursday</td><td>' . $data['Thursday'] . '</td></tr>');
+			echo('<tr><td>Friday</td><td>' . $data['Friday'] . '</td></tr>');
+			echo('<tr><td>Saturday</td><td>' . $data['Saturday'] . '</td></tr>');
+			echo('</table>');
 ?>
 <a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports</br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
