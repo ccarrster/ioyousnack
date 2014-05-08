@@ -89,11 +89,11 @@ I am taking cash out
 <?php
 //insert
 if(isset($_POST['amount'])){
-	$cashoutInsert = "INSERT INTO cashout (eaterid, delta, message, exchange_time) VALUES(".(int)$_POST['eaterid'].", '".$_POST['amount']."', '".$_POST['message']."', NOW());";
+	$cashoutInsert = "INSERT INTO cashout (eaterid, delta, message, exchange_time, storeid) VALUES(".(int)$_POST['eaterid'].", '".$_POST['amount']."', '".$_POST['message']."', NOW(), ".$storeId.");";
 	mysql_query($cashoutInsert);
 }
 //select
-$cashoutQuery = "SELECT name, delta, message, exchange_time from cashout join eaters on eaterid = eaters.id";
+$cashoutQuery = "SELECT name, delta, message, exchange_time from cashout join eater on eaterid = eater.id where eater.storeid = ".$storeId." and cashout.storeid = ".$storeId.";";
 $result = mysql_query($cashoutQuery);
 while($row = mysql_fetch_array( $result )) {
 	echo('Name: ' . $row['name'] . ' Amount: ' . $row['delta'] . ' Message: ' . $row['message'] . ' Time(GMT): ' . $row['exchange_time'] . '</br>');
