@@ -364,7 +364,7 @@ for (index = 0; index < users.length; ++index) {
 	document.write('</div>');
 	document.write('<div style="width:100px; height:100px;">');
 	document.write('</div>');
-	document.write('<div style="width:100px; text-align:center;">'+users[index].name+'</div>');
+	document.write('<div style="width:100px; text-align:center; height:20px; overflow: hidden;">'+users[index].name+'</div>');
 	var styleColor = 'color:red;';
 	if(users[index].debt <= 0){
 		styleColor = 'color:black;';
@@ -394,7 +394,7 @@ for (index = 0; index < eats.length; ++index) {
 		document.write('<div style="width:100px; height:100px;">');
 		document.write('</div>');
 		document.write('</div>');
-		document.write('<div style="width:100px; text-align:center;">'+eats[index].name+'</div>');
+		document.write('<div style="width:100px; text-align:center; height:20px; overflow: hidden;">'+eats[index].name+'</div>');
 		document.write('<div style="width:100px; text-align:center;">$'+formatMoney(eats[index].price)+'</div>');
 		document.write('</div>');
 	}
