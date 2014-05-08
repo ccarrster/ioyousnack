@@ -67,6 +67,24 @@ Reports<br/>
 			echo('<tr><td>Saturday</td><td>' . $data['Saturday'] . '</td></tr>');
 			echo('</table>');
 ?>
+<div></div>
+I am taking cash out
+<form method="post">
+	I am <select name="eaterid">
+	<?php
+			$eaterQuery = 'select id, name from eater;';
+			$result = mysql_query($eaterQuery);
+			while($row = mysql_fetch_array( $result )) {
+				echo('<option value="'.$row['id'].'">'.$row['name'].'</option>');
+			}
+	?></br>
+	</select>
+	Amount <input type="text" name="amount"></br>
+	Message <textarea name="message"></textarea></br>
+	<input type="submit">
+</form>
+</div>
+
 <a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports</br>
 <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
