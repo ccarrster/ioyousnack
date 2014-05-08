@@ -53,7 +53,7 @@ Reports<br/>
 
 			$dayEatQuery = 'select sum(delta) as delta, dayname(exchangeTime) as day_name from buypaylog where delta > 0 group by day_name;';
 			$result = mysql_query($dayEatQuery);
-			echo('<table><tr><td>Pennies</td><td>Day Name</td></tr>');
+			echo('<table><tr><td>Day Name</td><td>Pennies</td></tr>');
 			$data = array();
 			while($row = mysql_fetch_array( $result )) {
 				$data[$row['day_name']] = $row['delta'];
