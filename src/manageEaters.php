@@ -9,6 +9,11 @@ require_once('config.php');
 <head>
 	<title><?php echo($appName); ?></title>
 </head>
+<style>
+	a{
+		padding:20px;
+	}
+</style>
 <body>
 <?php
 $link = mysql_connect($dbUrl, $dbUser, $dbPassword);
@@ -125,9 +130,9 @@ for (index = 0; index < users.length; ++index) {
 	document.write('</div>');
 }
 </script>
-<div style="clear:both;">
-<a href="index.php?storeId=<?php echo($storeId); ?>">Buy/Pay</a> Manage Eaters <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
-<a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+<div style="clear:both;"></div>
+<div style="padding:20px;">
+<a href="index.php?storeId=<?php echo($storeId); ?>">Buy/Pay</a> Manage Eaters <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a> <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 </body>
 </html>

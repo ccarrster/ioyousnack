@@ -6,6 +6,13 @@ if(isset($_GET['storeId'])){
 }
 ?>
 <html>
+<head>
+<style>
+	a{
+		padding:20px;
+	}
+</style>
+</head>
 <body>
 Reports<br/>
 <?php
@@ -100,9 +107,9 @@ while($row = mysql_fetch_array( $result )) {
 }
 ?>
 </div>
-
-<a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports</br>
-<a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+<div style="padding:20px;">
+<a href="index.php?storeId=<?php echo($storeId); ?>"/>Buy/Pay</a> <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> Reports <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+</div>
 </div>
 </body>
 </html>

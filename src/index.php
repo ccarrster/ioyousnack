@@ -6,6 +6,9 @@ if(isset($_GET['storeId'])){
 require_once('config.php');
 ?>
 <style>
+	a{
+		padding:20px;
+	}
 	.nomnom{
 	animation:myfirst 5s;
 	-webkit-animation:myfirst 5s; /* Safari and Chrome */
@@ -376,7 +379,7 @@ for (index = 0; index < users.length; ++index) {
 </script>
 <div>
 <form>
-				<input style="float:left;" type="button" value="Deselect" onclick="selectUser(null);"/>
+				<input style="float:left; width:100px; height:100px;" type="button" value="Deselect" onclick="selectUser(null);"/>
 </form>
 	<div id="nomHistory" style="float:left;"></div>
 </div>
@@ -413,9 +416,9 @@ for (index = 0; index < money.length; ++index) {
 	document.write('</div>');
 }
 </script>
-<div style="clear:both;">
-Buy/Pay <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a></br>
-<a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
+<div style="clear:both;"></div>
+<div style="padding:20px;">
+Buy/Pay <a href="manageEaters.php?storeId=<?php echo($storeId); ?>">Manage Eaters</a> <a href="manageEats.php?storeId=<?php echo($storeId); ?>">Manage Eats</a> <a href="report.php?storeId=<?php echo($storeId); ?>">Reports</a> <a href="mailto:ccarrster@gmail.com">ccarrster@gmail.com</a>
 </div>
 </body>
 </html>
