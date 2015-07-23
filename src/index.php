@@ -73,50 +73,50 @@ function timerIncrement(){
 </script>
 <script language="javascript">
  var users = new Array();
- 
+
  var eats = new Array();
- 
+
  var money = new Array();
  var unit = new Object();
  unit.price="5";
  unit.image="nickel.jpg";
  money[0] = unit;
- 
+
  var unit = new Object();
  unit.price="10";
  unit.image="dime.jpg";
  money[1] = unit;
- 
+
  var unit = new Object();
  unit.price="25";
  unit.image="quarter.jpg";
  money[2] = unit;
- 
+
  var unit = new Object();
  unit.price="100";
  unit.image="loonie.jpg";
  money[3] = unit;
- 
+
  var unit = new Object();
  unit.price="200";
  unit.image="toonie.jpg";
  money[4] = unit;
- 
+
  var unit = new Object();
  unit.price="500";
  unit.image="five.jpg";
  money[5] = unit;
- 
+
  var unit = new Object();
  unit.price="1000";
  unit.image="ten.jpg";
  money[6] = unit;
- 
+
  var unit = new Object();
  unit.price="2000";
  unit.image="twenty.jpg";
  money[7] = unit;
- 
+
  var userSelected = null;
 
  function selectUser(id){
@@ -198,7 +198,7 @@ function timerIncrement(){
 		});
  	}
  }
- 
+
   function payMoney(id, retry){
  	if(userSelected != null){
 		omnomEats('pay'+id, userSelected);
@@ -228,7 +228,7 @@ function timerIncrement(){
 
 var nomToClear = new Array();
 var foodToClear = new Array();
- 
+
 function omnom(nomIndex){
 	var nomId = 'nomtop' + nomIndex;
 	document.getElementById('nomtop' + nomIndex).className = "nomnom";
@@ -280,7 +280,7 @@ function omnomEats(from, to){
 
  var eatFrom;
 
- 
+
  function formatMoney(pennies){
 	 if(pennies < 0){
 		 pennies = pennies * -1;
@@ -295,7 +295,7 @@ function omnomEats(from, to){
 	}
  	return penniesString;
  }
- 
+
 </script>
 <head>
 	<title><?php echo($appName); ?></title>
@@ -308,11 +308,10 @@ if(isset($ipWhiteList) && $ipWhiteList != '' && strpos($_SERVER['REMOTE_ADDR'], 
 ?>
 <script language="javascript">
 <?php
-$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-mysql_select_db($dbName);
-$result = mysql_query("select *, (SELECT count(eaterid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater WHERE eater.storeid = $storeId;");
+$link = mysqli_connect($dbUrl, $dbUser, $dbPassword, $dbName);
+$result = mysqli_query($link, "select *, (SELECT count(eaterid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eaterid = eater.id AND delta > 0 group by eaterid) as bought from eater WHERE eater.storeid = $storeId;");
 $arrayIndex = 0;
-while($row = mysql_fetch_array( $result )) {
+while($row = mysqli_fetch_array( $result )) {
 	echo('var user = new Object();');
 	echo('user.name="'.$row['name'].'";');
 	echo('user.debt="'.$row['debt'].'";');
@@ -326,9 +325,9 @@ while($row = mysql_fetch_array( $result )) {
 	echo('users['.$arrayIndex++.']=user;');
 }
 
-$result = mysql_query("select eat.*, (SELECT count(eatid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eatid = eat.id AND delta > 0 group by eatid) as sold from eat WHERE eat.storeid = $storeId;");
+$result = mysqli_query($link, "select eat.*, (SELECT count(eatid) from buypaylog where buypaylog.storeid = $storeId AND buypaylog.eatid = eat.id AND delta > 0 group by eatid) as sold from eat WHERE eat.storeid = $storeId;");
 $arrayIndex = 0;
-while($row = mysql_fetch_array( $result )) {
+while($row = mysqli_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');
@@ -360,7 +359,7 @@ Click Your Face
 <script language="javascript">
 for (index = 0; index < users.length; ++index) {
 	document.write('<div onclick="selectUser(this.id);" id="'+index+'" style="width:100px; border:thick solid #FFFFFF; float:left;">');
-	
+
 	document.write('<div style="position:relative;" width:100px; height:100px;">');
 	document.write('<div id="nomtop'+index+'" style="position:absolute; width:100px; height:60px; background-image:url(\'eaters/'+users[index].image+'\'); top:0px; left:0px;"></div>');
 	document.write('<div id="nombottom" style="position:absolute; width:100px; height:40px; background-image:url(\'eaters/'+users[index].image+'\'); background-position:0px -60px; top:60px; left:0px;"></div>');

@@ -9,18 +9,17 @@
 		$productid = $_GET['productid'];
 		$price = $_GET['price'];
 		if(preg_match("/^[0-9]+$/", $id) && preg_match("/^-?[0-9]+$/", $price) && preg_match("/^[0-9]+$/", $productid)){
-			$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-			mysql_select_db($dbName);
+			$link = mysqli_connect($dbUrl, $dbUser, $dbPassword, $dbName);
 			$query = "update eater set debt = debt + " . $price . " where storeid = $storeId AND id = " . $id;
-			mysql_query($query);
+			mysqli_query($link, $query);
 			$query = "select debt from eater where storeid = $storeId AND id = " . $id;
-			$result = mysql_query($query);
+			$result = mysqli_query($link, $query);
 			$arrayIndex = 0;
-			while($row = mysql_fetch_array( $result )) {
+			while($row = mysqli_fetch_array( $result )) {
 				$debt = $row['debt'];
 			}
 			$query = "insert into buypaylog (eaterid, eatid, delta, debt, exchangeTime, storeid) values('" . $id . "', '" . $productid . "', '" . $price . "', '" . $debt . "', now(), $storeId);";
-			mysql_query($query);
+			mysqli_query($link, $query);
 			echo($debt);
 		}
 	}

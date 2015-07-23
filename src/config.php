@@ -1,17 +1,16 @@
 <?php
 $dbUrl = 'localhost';
-$dbPassword = 'password';
+$dbPassword = 'F3ckth1s';
 $dbUser = 'root';
-$dbName = 'mysql';
+$dbName = 'snack';
 $appName = 'Snack Tracker';
 $ipWhiteList = '';
 $siteUrl = '';
 
-$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-mysql_select_db($dbName);
-$result = mysql_query("select ipwhitelist, name, url from store where id = $storeId;");
+$link = mysqli_connect($dbUrl, $dbUser, $dbPassword, $dbName);
+$result = mysqli_query($link, "select ipwhitelist, name, url from store where id = $storeId;");
 $arrayIndex = 0;
-while($row = mysql_fetch_array( $result )) {
+while($row = mysqli_fetch_array( $result )) {
 	$ipWhiteList = $row['ipwhitelist'];
 	$appName = $row['name'];
 	$siteUrl = $row['url'];

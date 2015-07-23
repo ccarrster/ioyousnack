@@ -16,8 +16,7 @@ require_once('config.php');
 </style>
 <body>
 <?php
-	$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-	mysql_select_db($dbName);
+	$link = mysqli_connect($dbUrl, $dbUser, $dbPassword, $dbName);
 	if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0)){
 		if(isset($_POST['action']) && $_POST['action'] == 'createEat'){
 			$name = $_POST['name'];
@@ -41,7 +40,7 @@ require_once('config.php');
 				$picture = $storeId . '_' . $_FILES["picture"]["name"];
 			}
 			$query = "insert into eat (name, picture, price, enabled, storeid) values('".$name."', '".$picture."', '".$price."', ".$enabled.", $storeId);";
-			mysql_query($query);
+			mysqli_query($link, $query);
 			echo('**Created Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
 			$name = $_POST['name'];
@@ -69,7 +68,7 @@ require_once('config.php');
 			} else {
 				$query = "update eat set enabled = ".$enabled.", name='".$name."', price='".$price."' where storeid = $storeId AND id = ".$id.";";
 			}
-			mysql_query($query);
+			mysqli_query($link, $query);
 			echo('**Updated Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEat'){
 			$id = $_POST['id'];
@@ -77,7 +76,7 @@ require_once('config.php');
 				$id = -1;
 			}
 			$query = "delete from eat where storeid = $storeId AND id = ".$id.";";
-			mysql_query($query);
+			mysqli_query($link, $query);
 			echo('**Deleted Eat ' . $id . '**</br>');
 		}
 	} else {
@@ -97,9 +96,9 @@ Price(cents) <input type="text" name="price"/></br>
 	var eats = new Array();
 
 <?php
-$result = mysql_query("select * from eat where storeid = $storeId;");
+$result = mysqli_query($link, "select * from eat where storeid = $storeId;");
 $arrayIndex = 0;
-while($row = mysql_fetch_array( $result )) {
+while($row = mysqli_fetch_array( $result )) {
 	echo('var eat = new Object();');
 	echo('eat.name="'.$row['name'].'";');
 	echo('eat.price="'.$row['price'].'";');

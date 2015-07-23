@@ -16,8 +16,7 @@ require_once('config.php');
 </style>
 <body>
 <?php
-$link = mysql_connect($dbUrl, $dbUser, $dbPassword);
-mysql_select_db($dbName);
+$link = mysqli_connect($dbUrl, $dbUser, $dbPassword, $dbName);
 if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'], $ipWhiteList) === 0)){
 	if(isset($_POST['action']) && $_POST['action'] == 'createEater'){
 		$name = $_POST['name'];
@@ -38,7 +37,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			*/
 		}
 		$query = "insert into eater (name, picture, debt, storeid) values('".$name."', '".$picture."', 0, $storeId);";
-		mysql_query($query);
+		mysqli_query($link, $query);
 		echo('**Created User ' . $name . '**</br>');
 	} else if(isset($_POST['action']) && $_POST['action'] == 'updateEater'){
 		$name = $_POST['name'];
@@ -68,7 +67,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 		} else {
 			$query = "update eater set name='".$name."', debt='".$debt."' where storeid = $storeId AND id = ".$id.";";
 		}
-		mysql_query($query);
+		mysqli_query($link, $query);
 		echo('**Updated User ' . $name . '**</br>');
 	} else if(isset($_POST['action']) && $_POST['action'] == 'deleteEater'){
 		$id = $_POST['id'];
@@ -76,7 +75,7 @@ if(isset($ipWhiteList) && ($ipWhiteList == '' || strpos($_SERVER['REMOTE_ADDR'],
 			$id = -1;
 		}
 		$query = "delete from eater where storeid = $storeId AND id = ".$id.";";
-		mysql_query($query);
+		mysqli_query($link, $query);
 		echo('**Deleted User ' . $id . '**</br>');
 	}
 } else {
@@ -94,9 +93,9 @@ Name <input type="text" name="name"/></br>
 	var users = new Array();
 
 <?php
-$result = mysql_query("select * from eater WHERE storeid = $storeId;");
+$result = mysqli_query($link, "select * from eater WHERE storeid = $storeId;");
 $arrayIndex = 0;
-while($row = mysql_fetch_array( $result )) {
+while($row = mysqli_fetch_array( $result )) {
 	echo('var user = new Object();');
 	echo('user.name="'.$row['name'].'";');
 	echo('user.debt="'.$row['debt'].'";');
