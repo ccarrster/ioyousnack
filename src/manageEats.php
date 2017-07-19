@@ -39,7 +39,7 @@ require_once('config.php');
 				move_uploaded_file($_FILES["picture"]["tmp_name"], "eats/" . $storeId . '_' . $_FILES["picture"]["name"]);
 				$picture = $storeId . '_' . $_FILES["picture"]["name"];
 			}
-			$query = "insert into eat (name, picture, price, enabled, storeid) values('".$name."', '".$picture."', '".$price."', ".$enabled.", $storeId);";
+			$query = "insert into eat (name, picture, price, enabled, storeid) values('".$name."', '".$picture."', '".$price."', true, $storeId);";
 			mysqli_query($link, $query);
 			echo('**Created Eat ' . $name . '**</br>');
 		} else if(isset($_POST['action']) && $_POST['action'] == 'updateEat'){
